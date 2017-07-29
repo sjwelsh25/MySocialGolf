@@ -86,23 +86,21 @@ namespace MySocialGolf.Web.API.MvcControllers
         // GET: TestAPI/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            // Make a Copy and then return same View
+            var taMngr = new TestApiDtoManager();
+            taMngr.DeleteTestApi(id);
+
+            return RedirectToAction("List");
         }
 
-        // POST: TestAPI/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        // GET: TestAPI/Clone/5
+        public ActionResult Clone(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            // Make a Copy and then return same View
+            var taMngr = new TestApiDtoManager();
+            taMngr.CloneTestApi(id);
 
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return RedirectToAction("List");
         }
     }
 }

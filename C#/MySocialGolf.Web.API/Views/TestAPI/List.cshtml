@@ -13,10 +13,10 @@
 
 <div class="container">
     <div class="row h4">
-        <div class="col-xs-2">Name</div>
+        <div class="col-xs-3">Name</div>
         <div class="col-xs-1">Verb</div>
         <div class="col-xs-2">Url</div>
-        <div class="col-xs-3">Last Response</div>
+        <div class="col-xs-2">Last Response</div>
         <div class="col-xs-1"></div>
         <div class="col-xs-3"></div>
     </div>
@@ -26,10 +26,10 @@
             <div class="row">
                 <div class="list-group-item">
                     <div class="row">
-                        <div class="col-xs-2">@testApi.TestName</div>
+                        <div class="col-xs-3">@testApi.TestName</div>
                         <div class="col-xs-1">@testApi.HttpVerb</div>
                         <div class="col-xs-2">@testApi.TestUrl</div>
-                        <div class="col-xs-3" id="lastResponseDiv_@testApi.TestApiId">@testApi.LastResponseCalculated</div>
+                        <div class="col-xs-2" id="lastResponseDiv_@testApi.TestApiId">@testApi.LastResponseCalculated</div>
                         <div class="col-xs-1">
                             <img src="~/Images/GreenTick.png" id="GreenTickImage_@testApi.TestApiId" style="display:none"/> 
                             <img src="~/Images/RedCross.png" id="RedCrossImage_@testApi.TestApiId"  style="display:none"/>
@@ -38,6 +38,7 @@
                             @Html.ActionLink("Edit", "Edit", new { id = @testApi.TestApiId } )
                             @Html.ActionLink("View", "Details", new { id= @testApi.TestApiId })
                             @Html.ActionLink("Delete", "Delete", new { id = @testApi.TestApiId })
+                            @Html.ActionLink("Clone", "Clone", new { id = @testApi.TestApiId })
                             <button id="editButton_@testApi.TestApiId" data-id="@testApi.TestApiId" class="btn btn-default editButton">Run</button>
                         </div>
                     </div>

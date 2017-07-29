@@ -15,3 +15,6 @@ public ActionResult Email(UserDTO user)
 	return View(user);
 	// return RedirectToAction("Index");
 }
+
+Problem: Where did we get the ticks and crosses from?
+Solution:

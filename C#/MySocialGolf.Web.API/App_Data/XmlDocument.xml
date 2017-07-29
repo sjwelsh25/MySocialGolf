@@ -534,7 +534,7 @@
             <summary>
             Get a User
             </summary>
-            <returns></returns>
+            <returns>UserDto</returns> 
         </member>
         <member name="M:MySocialGolf.Web.API.UsersController.Post(MySocialGolf.DtoModel.UserDto)">
             <summary>

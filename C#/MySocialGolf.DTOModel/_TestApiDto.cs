@@ -15,6 +15,7 @@ namespace MySocialGolf.DtoModel
         public string TestInputJson { get; set; }
         public string HttpVerb { get; set; }
         public string ReturnType { get; set; }
+        public int? SortOrder { get; set; }
         public int? CreatedById { get; set; }
         public DateTime? CreatedDateTime { get; set; }
         public int? ModifiedById { get; set; }

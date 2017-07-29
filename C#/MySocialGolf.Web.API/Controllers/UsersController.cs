@@ -46,7 +46,7 @@ namespace MySocialGolf.Web.API
                 user = udm.GetUser(id);
                 if (user == null)
                 {
-                    return NotFound();
+                    return BadRequest($"User {id} does not exist");
                 }
             }
             catch (Exception ex)

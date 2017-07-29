@@ -18,10 +18,23 @@ namespace MySocialGolf.Web.API.Controllers
         /// </summary>
         /// <returns>List of GolfRoundDtos</returns>
         [Route("api/users/{userid}/rounds")]
-        public IEnumerable<GolfRoundDto> GetRoundsForUser(int userId)
+        public IHttpActionResult GetRoundsForUser(int userId)
         {
             var grMngr = new GolfRoundsDtoManager();
-            return grMngr.ListGolfRoundForUser(userId);
+            IEnumerable<GolfRoundDto> roundsList;
+            try
+            {
+                roundsList = grMngr.ListGolfRoundForUser(userId);// all for this user
+                if (roundsList == null)
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            return Ok(roundsList);
         }
 
         // GET: api/Rounds/5
@@ -29,10 +42,23 @@ namespace MySocialGolf.Web.API.Controllers
         /// Get a GolfRound
         /// </summary>
         /// <returns>GolfRoundDto</returns>
-        public GolfRoundDto Get(int roundId = 0)
+        public IHttpActionResult Get(int roundId = 0)
         {
             var grMngr = new GolfRoundsDtoManager();
-            return grMngr.GetGolfRound(roundId);
+            GolfRoundDto round;
+            try
+            {
+                round = grMngr.GetGolfRound(roundId);
+                if (round == null)
+                {
+                    return BadRequest($"Round {roundId} does not exist");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            return Ok(round);
         }
 
         // POST: api/Rounds
@@ -54,9 +80,7 @@ namespace MySocialGolf.Web.API.Controllers
                     return BadRequest(ex.Message);
                 }
                 return Ok(golfRound.SubmitMessage);
-
             }
-
         }
 
         // PUT: api/Rounds/5
