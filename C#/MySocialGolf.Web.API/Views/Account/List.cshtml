@@ -1,0 +1,129 @@
+﻿@model IEnumerable<MySocialGolf.DtoModel.TestApiDto>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmitMessage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestApiId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestApiGuid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestInputJson)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HttpVerb)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReturnType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedById)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedById)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastLogResponse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastStatusCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastLogDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResponseToLog)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestAPIMessage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubmitMessage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestApiId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestApiGuid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestInputJson)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HttpVerb)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReturnType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedById)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedById)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastLogResponse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastStatusCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastLogDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResponseToLog)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestAPIMessage)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

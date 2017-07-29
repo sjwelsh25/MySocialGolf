@@ -1,0 +1,2 @@
+// change button text by ID
+$("#editButton_1").text('new');

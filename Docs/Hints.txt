@@ -1,0 +1,17 @@
+Problem: MVC - How to have multiple submit butons on a page and handle the different actions? 18/5/16
+Solution: add a html formaction e.g.
+<input type="submit" value="Create" class="btn btn-default" formaction="Add" />
+<input type="submit" value="Email" class="btn btn-default" formaction="Email" />
+
+then in Controller - copy the main post action:
+// POST: User/Email
+[HttpPost]
+public ActionResult Email(UserDTO user)
+{
+	// Add insert logic here
+	UserDBManager usrMngr = new UserDBManager();
+	usrMngr.AddUser(user);
+
+	return View(user);
+	// return RedirectToAction("Index");
+}

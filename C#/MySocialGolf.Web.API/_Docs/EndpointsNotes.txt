@@ -1,0 +1,11 @@
+﻿Comments:
+
+REST practitioners are split on how to solve the problem of associating resources. 
+Some say that the hierarchy should continue to grow, giving endpoints like:
+/customers/5/orders for all of customer #5's orders 
+/customers/5/orders/3 for Customer #5's third order
+
+vs 
+
+Others argue to keep things flat by including associated details in the data for a resource. Under this paradigm, creating an order requires a customer_id
+/orders   --> where customerId must be passed in 

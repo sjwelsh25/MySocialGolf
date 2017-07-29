@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialGolf.Web.API", "MySocialGolf.Web.API\MySocialGolf.Web.API.csproj", "{7C8A180B-B3F8-4400-AF31-3D4736ED87C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialGolf.DtoModel", "MySocialGolf.DTOModel\MySocialGolf.DtoModel.csproj", "{0246314E-1ACD-4415-B041-A19570E98F24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialGolf.DtoManager", "MySocialGolf.DTOManager\MySocialGolf.DtoManager.csproj", "{E1EBF3A1-362A-4AA7-BC37-612959E0B411}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialGolf.Model", "MySocialGolf.Model\MySocialGolf.Model.csproj", "{FA1DE9DA-5AAD-4706-AE0B-FC04BFD8ED4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialGolf.Manager.RESTful", "MySocialGolf.Manager.RESTful\MySocialGolf.Manager.RESTful.csproj", "{D5407A43-A199-418D-B23F-BA3BFD106041}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialGolf.Manager", "MySocialGolf.Manager\MySocialGolf.Manager.csproj", "{3A2B5B12-B931-4529-8C0B-2D4D5026B9A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialGolf.Extensions", "MySocialGolf.Extensions\MySocialGolf.Extensions.csproj", "{3406F6E3-45E6-458A-B5F5-843909E95B64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C8A180B-B3F8-4400-AF31-3D4736ED87C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C8A180B-B3F8-4400-AF31-3D4736ED87C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C8A180B-B3F8-4400-AF31-3D4736ED87C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C8A180B-B3F8-4400-AF31-3D4736ED87C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0246314E-1ACD-4415-B041-A19570E98F24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0246314E-1ACD-4415-B041-A19570E98F24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0246314E-1ACD-4415-B041-A19570E98F24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0246314E-1ACD-4415-B041-A19570E98F24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1EBF3A1-362A-4AA7-BC37-612959E0B411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1EBF3A1-362A-4AA7-BC37-612959E0B411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1EBF3A1-362A-4AA7-BC37-612959E0B411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1EBF3A1-362A-4AA7-BC37-612959E0B411}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA1DE9DA-5AAD-4706-AE0B-FC04BFD8ED4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA1DE9DA-5AAD-4706-AE0B-FC04BFD8ED4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA1DE9DA-5AAD-4706-AE0B-FC04BFD8ED4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA1DE9DA-5AAD-4706-AE0B-FC04BFD8ED4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5407A43-A199-418D-B23F-BA3BFD106041}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5407A43-A199-418D-B23F-BA3BFD106041}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5407A43-A199-418D-B23F-BA3BFD106041}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5407A43-A199-418D-B23F-BA3BFD106041}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A2B5B12-B931-4529-8C0B-2D4D5026B9A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A2B5B12-B931-4529-8C0B-2D4D5026B9A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A2B5B12-B931-4529-8C0B-2D4D5026B9A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A2B5B12-B931-4529-8C0B-2D4D5026B9A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3406F6E3-45E6-458A-B5F5-843909E95B64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3406F6E3-45E6-458A-B5F5-843909E95B64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3406F6E3-45E6-458A-B5F5-843909E95B64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3406F6E3-45E6-458A-B5F5-843909E95B64}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,20 @@
+﻿@model IEnumerable<string>
+
+@{
+    ViewBag.Title = "Rounds";
+}
+
+<h2>Rounds</h2>
+
+<form class="input-group">
+    <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+    <input type="text" class="form-control" placeholder="Search Rounds">
+</form>
+<br />
+
+<div class="list-group">
+    @foreach (var tag in Model)
+    {
+        @Html.ActionLink(tag, "SessionsByTag", new { tag }, new { @class = "list-group-item" })
+    }
+</div>

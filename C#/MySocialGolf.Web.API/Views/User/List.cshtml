@@ -1,0 +1,36 @@
+﻿@model MySocialGolf.Web.Models.ViewModels.UserListViewModel
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Friends</h2>
+
+<form class="input-group">
+    <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+    <input type="text" class="form-control" placeholder="Search Friends">
+</form>
+<br />
+
+<div class="container">
+    <div class="row h4">
+        <div class="col-xs-6">Surname</div>
+        <div class="col-xs-3">Handicap</div>
+        <div class="col-xs-3">Last Round</div>
+    </div>
+    <div class="list-group">
+        @foreach (var user in Model.UserDTOList)
+        {
+            <div class="row">
+                <a href="#" class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-6">@String.Format("{0} {1}", @user.Surname, @user.FirstName)</div>
+                        <div class="col-xs-3">@(user.CurrentHandicap == null ? "-" : @user.CurrentHandicap.Value.ToString("#"))</div>
+                        <div class="col-xs-3">@user.LastGolfRoundDate.ToString("dd/MM/yy")</div>
+                    </div>
+                </a>
+
+            </div>
+        }
+    </div>
+</div>

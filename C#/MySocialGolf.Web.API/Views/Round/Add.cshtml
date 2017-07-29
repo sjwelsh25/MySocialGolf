@@ -1,0 +1,83 @@
+﻿@model MySocialGolf.DtoModel.GolfRoundDto
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add your Golf Round</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GolfCourseName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.GolfCourseName)
+                @Html.ValidationMessageFor(model => model.GolfCourseName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HandicapThatDay, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HandicapThatDay)
+                @Html.ValidationMessageFor(model => model.HandicapThatDay)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StableFordScore, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StableFordScore)
+                @Html.ValidationMessageFor(model => model.StableFordScore)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StrokeScore, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StrokeScore)
+                @Html.ValidationMessageFor(model => model.StrokeScore)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CourseParThatDay, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CourseParThatDay)
+                @Html.ValidationMessageFor(model => model.CourseParThatDay)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @if (Model != null && Model.SubmitMessage != "")
+            {
+                <div class="alert alert-success">
+                    @Html.DisplayFor(model => model.SubmitMessage)
+                </div>
+            }
+        </div>
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "List")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
