@@ -8,7 +8,8 @@ using System.Web.Routing;
 using System.Web.WebPages;
 using TwitterBootstrapMVC;
 using System.Web.Http;
-
+using System.Web.Helpers;
+using System.Security.Claims;
 
 namespace MySocialGolf.Web
 {
@@ -27,6 +28,7 @@ namespace MySocialGolf.Web
                 ContextCondition = (context => context.GetOverriddenUserAgent().IndexOf
                     ("iPhone", StringComparison.OrdinalIgnoreCase) >= 0)
             });
+
             Bootstrap.Configure();
         }
     }

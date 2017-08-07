@@ -8,6 +8,7 @@ using System;
 
 namespace MySocialGolf.Web.API.MvcControllers
 {
+    [Authorize]
     public class TestAPIController : Controller
     {
         // GET: TestAPI

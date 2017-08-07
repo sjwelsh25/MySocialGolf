@@ -5,6 +5,7 @@ using MySocialGolf.DtoModel;
 
 namespace MySocialGolf.Web.Controllers
 {
+    [Authorize]
     public class RoundController : Controller
     {
         // GET: Rounds

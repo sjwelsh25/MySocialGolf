@@ -6,6 +6,7 @@ using MySocialGolf.Model;
 
 namespace MySocialGolf.Web.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         // GET: User
