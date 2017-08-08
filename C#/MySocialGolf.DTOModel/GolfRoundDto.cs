@@ -22,5 +22,6 @@ namespace MySocialGolf.DtoModel
         //new public int? CourseParThatDay { get; set; }
 
         public int UserId { get; set; }
+        public string HandicapAndDate { get; set; }
     }
 }

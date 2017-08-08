@@ -10,5 +10,6 @@ namespace MySocialGolf.DtoModel
     {
         public int? NewUserID { get; set; }
         public DateTime LastGolfRoundDate { get; set; }
+        public string LastHandicapAndDate { get; set; }
     }
 }
