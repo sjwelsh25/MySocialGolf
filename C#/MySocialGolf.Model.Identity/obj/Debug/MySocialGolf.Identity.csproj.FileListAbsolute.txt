@@ -1,0 +1,7 @@
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Identity\bin\Debug\MySocialGolf.Identity.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Identity\bin\Debug\MySocialGolf.Identity.pdb
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Identity\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Identity\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Identity\obj\Debug\MySocialGolf.Identity.csprojResolveAssemblyReference.cache
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Identity\obj\Debug\MySocialGolf.Identity.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Identity\obj\Debug\MySocialGolf.Identity.pdb

@@ -38,6 +38,7 @@ namespace MySocialGolf.DtoManager
             p.Add("@Surname", user.Surname);
             p.Add("@FirstName", user.FirstName);
             p.Add("@Email", user.Email);
+            p.Add("@UserName", user.Email);
             p.Add("@Mobile", user.Mobile);
             p.Add("@CurrentHandicap", user.CurrentHandicap);
             // output params

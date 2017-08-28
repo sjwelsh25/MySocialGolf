@@ -9,6 +9,9 @@ namespace MySocialGolf.DtoModel
     public class _UserDto: BaseDto 
     {
         public int UserId { get; set; }
+        public string UserName { get; set; }
+        public string PasswordHash { get; set; }
+        public string SecurityStamp { get; set; }
         public Guid UserGuid { get; set; }
         public string Surname { get; set; }
         public string FirstName { get; set; }

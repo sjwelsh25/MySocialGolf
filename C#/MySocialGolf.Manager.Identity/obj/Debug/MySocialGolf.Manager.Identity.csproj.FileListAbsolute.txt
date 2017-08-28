@@ -1,0 +1,11 @@
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Identity\bin\Debug\MySocialGolf.Manager.Identity.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Identity\bin\Debug\MySocialGolf.Manager.Identity.pdb
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Identity\bin\Debug\Dapper.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Identity\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Identity\bin\Debug\MySocialGolf.Model.Identity.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Identity\bin\Debug\MySocialGolf.Model.Identity.pdb
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Identity\bin\Debug\Dapper.xml
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Identity\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Identity\obj\Debug\MySocialGolf.Manager.Identity.csprojResolveAssemblyReference.cache
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Identity\obj\Debug\MySocialGolf.Manager.Identity.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Identity\obj\Debug\MySocialGolf.Manager.Identity.pdb

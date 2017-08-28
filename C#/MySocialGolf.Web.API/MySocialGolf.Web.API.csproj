@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MySocialGolf.Web.API</RootNamespace>
     <AssemblyName>MySocialGolf.Web.API</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -42,20 +42,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -110,9 +98,9 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -186,7 +174,6 @@
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
@@ -220,7 +207,6 @@
     <Compile Include="Controllers\GolfAdminController.cs" />
     <Compile Include="Controllers\RoundsController.cs" />
     <Compile Include="MvcControllers\AccountController.cs" />
-    <Compile Include="MvcControllers\ManageController.cs" />
     <Compile Include="MvcControllers\HomeController.cs" />
     <Compile Include="MvcControllers\RoundController.cs" />
     <Compile Include="MvcControllers\TestAPIController.cs" />
@@ -233,8 +219,11 @@
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
-    <Compile Include="ViewModels\IdentityModels.cs" />
+    <Compile Include="ViewModels\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\ManageUserViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\UserGolfRoundListViewModel.cs" />
     <Compile Include="ViewModels\TestApiViewModel.cs" />
     <Compile Include="ViewModels\UserListViewModel.cs" />
@@ -313,24 +302,15 @@
     <Content Include="Views\User\Add.cshtml" />
     <Content Include="Views\Round\Add.cshtml" />
     <Content Include="Views\Round\List.cshtml" />
-    <Content Include="Views\Account\ChangePassword.cshtml" />
-    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\TestAPI\List.cshtml" />
     <Content Include="Views\TestAPI\Add.cshtml" />
     <Content Include="Views\TestAPI\Edit.cshtml" />
-    <Content Include="Views\Account\List.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
@@ -338,6 +318,10 @@
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MySocialGolf.DTOManager\MySocialGolf.DtoManager.csproj">
@@ -348,13 +332,17 @@
       <Project>{0246314e-1acd-4415-b041-a19570e98f24}</Project>
       <Name>MySocialGolf.DtoModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MySocialGolf.Manager.Login\MySocialGolf.Manager.Login.csproj">
-      <Project>{e187c4b4-659f-4f49-80b4-6aa34f0509f0}</Project>
-      <Name>MySocialGolf.Manager.Login</Name>
+    <ProjectReference Include="..\MySocialGolf.Manager.Identity\MySocialGolf.Manager.Identity.csproj">
+      <Project>{ae59a2b1-8e9e-4590-9183-1724f6d7953d}</Project>
+      <Name>MySocialGolf.Manager.Identity</Name>
     </ProjectReference>
     <ProjectReference Include="..\MySocialGolf.Manager\MySocialGolf.Manager.csproj">
       <Project>{3a2b5b12-b931-4529-8c0b-2d4d5026b9a9}</Project>
       <Name>MySocialGolf.Manager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MySocialGolf.Model.Identity\MySocialGolf.Model.Identity.csproj">
+      <Project>{8e9fe29e-52be-4e62-82e3-192bedc91f73}</Project>
+      <Name>MySocialGolf.Model.Identity</Name>
     </ProjectReference>
     <ProjectReference Include="..\MySocialGolf.Model\MySocialGolf.Model.csproj">
       <Project>{fa1de9da-5aad-4706-ae0b-fc04bfd8ed4c}</Project>
