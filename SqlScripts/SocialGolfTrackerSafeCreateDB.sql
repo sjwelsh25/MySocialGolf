@@ -5,7 +5,7 @@ PRINT 'CHECK TABLE [dbo].[TestApi]'
 GO
 
 /* History:
-15/6/17  
+16/6/17  
   Created to store the TestApi records - used to test the RESTFul services 
 */
 
