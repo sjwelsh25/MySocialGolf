@@ -16,5 +16,14 @@ namespace MySocialGolf.Extensions
             }
             return source.ToLower().Equals(param.ToLower());
         }
+
+        public static int IToInt(this string source)
+        {
+            if (source == null)
+            {
+                return 0;
+            }
+            return Convert.ToInt32(source);
+        }
     }
 }

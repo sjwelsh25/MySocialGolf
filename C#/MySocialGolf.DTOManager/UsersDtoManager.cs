@@ -24,6 +24,13 @@ namespace MySocialGolf.DtoManager
             return BaseSqlConnection.Query<UserDto>("UserList", p, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
         }
 
+        public UserDto GetUserByUserName(string userName)
+        {
+            DynamicParameters p = new DynamicParameters();
+            p.Add("@UserName", userName);
+            return BaseSqlConnection.Query<UserDto>("UserList", p, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
+        }
+
         public IEnumerable<UserDto> ListUser(UserSearchModel us)
         {
             DynamicParameters p = new DynamicParameters();
@@ -35,10 +42,12 @@ namespace MySocialGolf.DtoManager
         public bool AddUser(UserDto user)
         {
             DynamicParameters p = new DynamicParameters();
+            p.Add("@UserName", user.UserName);
+            p.Add("@PasswordHash", user.PasswordHash);
+            p.Add("@SecurityStamp", user.SecurityStamp);
             p.Add("@Surname", user.Surname);
             p.Add("@FirstName", user.FirstName);
             p.Add("@Email", user.Email);
-            p.Add("@UserName", user.Email);
             p.Add("@Mobile", user.Mobile);
             p.Add("@CurrentHandicap", user.CurrentHandicap);
             // output params

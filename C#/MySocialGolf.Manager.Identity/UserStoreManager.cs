@@ -8,25 +8,15 @@ using Dapper;
 using MySocialGolf.Model.Identity;
 using System.Configuration;
 using System.Data.SqlClient;
+using MySocialGolf.DtoManager;
+using MySocialGolf.DtoModel;
+using MySocialGolf.Extensions;
 
 namespace MySocialGolf.Manager.Identity
 {
     public class UserStoreManager: IUserStore<MsgUser>, IUserLoginStore<MsgUser>, IUserPasswordStore<MsgUser>, IUserSecurityStampStore<MsgUser>
     {
         private readonly string connectionString;
-
-        public UserStoreManager(string connectionString)
-        {
-            if (string.IsNullOrWhiteSpace(connectionString))
-                throw new ArgumentNullException("connectionString");
-
-            this.connectionString = connectionString;
-        }
-
-        public UserStoreManager()
-        {
-            this.connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-        }
 
         public void Dispose()
         {
@@ -40,9 +30,18 @@ namespace MySocialGolf.Manager.Identity
                 throw new ArgumentNullException("user");
 
             return Task.Factory.StartNew(() => {
-                user.UserId = Guid.NewGuid();
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                    connection.Execute("insert into Users(userId, UserName, PasswordHash, SecurityStamp) values(@userId, @userName, @passwordHash, @securityStamp)", user);
+                var uDtomngr = new UserDtoManager();
+                var uDto = new UserDto()
+                {
+                    UserName = user.UserName,
+                    PasswordHash = user.PasswordHash,
+                    SecurityStamp = user.SecurityStamp
+                };
+                uDtomngr.AddUser(uDto);
+                user.UserId = uDto.UserId.ToString();
+                //user.UserId = Guid.NewGuid();
+                //using (SqlConnection connection = new SqlConnection(connectionString))
+                //    connection.Execute("insert into Users(userId, UserName, PasswordHash, SecurityStamp) values(@userId, @userName, @passwordHash, @securityStamp)", user);
             });
         }
 
@@ -53,8 +52,10 @@ namespace MySocialGolf.Manager.Identity
 
             return Task.Factory.StartNew(() =>
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                    connection.Execute("deete from Users where UserId = @userId", new { user.UserId });
+                var uDtomngr = new UserDtoManager();
+                uDtomngr.DeleteUser(user.UserId.IToInt());
+                //using (SqlConnection connection = new SqlConnection(connectionString))
+                //    connection.Execute("deete from Users where UserId = @userId", new { user.UserId });
             });
         }
 
@@ -63,14 +64,23 @@ namespace MySocialGolf.Manager.Identity
             if (string.IsNullOrWhiteSpace(userId))
                 throw new ArgumentNullException("userId");
 
-            Guid parsedUserId;
-            if (!Guid.TryParse(userId, out parsedUserId))
-                throw new ArgumentOutOfRangeException("userId", string.Format("'{0}' is not a valid GUID.", new { userId }));
+            //Guid parsedUserId;
+            //if (!Guid.TryParse(userId, out parsedUserId))
+            //    throw new ArgumentOutOfRangeException("userId", string.Format("'{0}' is not a valid GUID.", new { userId }));
 
             return Task.Factory.StartNew(() =>
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                    return connection.Query<MsgUser>("select * from Users where UserId = @userId", new { userId = parsedUserId }).SingleOrDefault();
+                var uDtomngr = new UserDtoManager();
+                var uDto = uDtomngr.GetUser(userId.IToInt());
+                var myUser = new MsgUser();
+
+                myUser.UserId = uDto.UserId.ToString();
+                myUser.UserName = uDto.UserName;
+                myUser.PasswordHash = uDto.PasswordHash;
+                myUser.SecurityStamp = uDto.SecurityStamp;
+                return myUser;
+                //using (SqlConnection connection = new SqlConnection(connectionString))
+                //    return connection.Query<MsgUser>("select * from Users where UserId = @userId", new { userId = parsedUserId }).SingleOrDefault();
             });
         }
 
@@ -81,8 +91,22 @@ namespace MySocialGolf.Manager.Identity
 
             return Task.Factory.StartNew(() =>
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                    return connection.Query<MsgUser>("select * from Users where lower(userName) = lower(@userName)", new { userName }).SingleOrDefault();
+                var uDtomngr = new UserDtoManager();
+                var uDto = uDtomngr.GetUserByUserName(userName);
+
+                if (uDto == null)
+                    return null;
+
+                return new MsgUser()
+                {
+                    UserId = uDto.UserId.ToString(),
+                    UserName = uDto.UserName,
+                    PasswordHash = uDto.PasswordHash,
+                    SecurityStamp = uDto.SecurityStamp
+                };
+
+                //using (SqlConnection connection = new SqlConnection(connectionString))
+                //    return connection.Query<MsgUser>("select * from Users where lower(userName) = lower(@userName)", new { userName }).SingleOrDefault();
             });
         }
 

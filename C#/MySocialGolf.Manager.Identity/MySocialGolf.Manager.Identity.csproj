@@ -56,6 +56,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MySocialGolf.DTOManager\MySocialGolf.DtoManager.csproj">
+      <Project>{e1ebf3a1-362a-4aa7-bc37-612959e0b411}</Project>
+      <Name>MySocialGolf.DtoManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MySocialGolf.DTOModel\MySocialGolf.DtoModel.csproj">
+      <Project>{0246314e-1acd-4415-b041-a19570e98f24}</Project>
+      <Name>MySocialGolf.DtoModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MySocialGolf.Extensions\MySocialGolf.Extensions.csproj">
+      <Project>{3406f6e3-45e6-458a-b5f5-843909e95b64}</Project>
+      <Name>MySocialGolf.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MySocialGolf.Model.Identity\MySocialGolf.Model.Identity.csproj">
       <Project>{8e9fe29e-52be-4e62-82e3-192bedc91f73}</Project>
       <Name>MySocialGolf.Model.Identity</Name>
