@@ -10,6 +10,9 @@ using Microsoft.Owin.Security;
 using MySocialGolf.Manager.Identity;
 using MySocialGolf.Model.Identity;
 using MySocialGolf.Web.API.ViewModels;
+using MySocialGolf.DtoManager;
+using MySocialGolf.Extensions;
+using MySocialGolf.DtoModel;
 
 namespace MySocialGolf.Web.Controllers
 {
@@ -17,16 +20,16 @@ namespace MySocialGolf.Web.Controllers
     public class AccountController : Controller
     {
         public AccountController()
-            : this(new UserManager<MsgUser>(new UserStoreManager()))
+            : this(new UserManager<IdentityUser>(new UserStoreManager()))
         {
         }
 
-        public AccountController(UserManager<MsgUser> userManager)
+        public AccountController(UserManager<IdentityUser> userManager)
         {
             UserManager = userManager;
         }
 
-        public UserManager<MsgUser> UserManager { get; private set; }
+        public UserManager<IdentityUser> UserManager { get; private set; }
 
         //
         // GET: /Account/Login
@@ -79,7 +82,10 @@ namespace MySocialGolf.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new MsgUser() { UserName = model.UserName };
+                var user = new IdentityUser()
+                {
+                    UserName = model.UserName
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -93,6 +99,35 @@ namespace MySocialGolf.Web.Controllers
             }
 
             // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        //
+        // GET: /Account/myprofile
+        public ActionResult MyProfile()
+        {
+            UserDtoManager uDtoMngr = new UserDtoManager();
+            UserDto uDto = uDtoMngr.GetUser(User.Identity.GetUserId().IToInt());
+            MyProfileViewModel mpvm = uDto.ICopyObject<MyProfileViewModel>();
+            return View(mpvm);
+        }
+
+        //
+        // POST: /Account/myprofile
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> MyProfile(MyProfileViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var uDto = model.ICopyObject<UserDto>();
+                uDto.UserId = User.Identity.GetUserId().IToInt(); // may not be in VM as View does not display the user Id - add it again
+                // Add insert logic here
+                var usrMngr = new UserDtoManager();
+                usrMngr.UpdateUser(uDto);
+                model.SubmitMessage = uDto.SubmitMessage;
+            }
+
             return View(model);
         }
 
@@ -266,7 +301,7 @@ namespace MySocialGolf.Web.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new MsgUser() { UserName = model.UserName };
+                var user = new IdentityUser() { UserName = model.UserName };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -332,7 +367,7 @@ namespace MySocialGolf.Web.Controllers
             }
         }
 
-        private async Task SignInAsync(MsgUser user, bool isPersistent)
+        private async Task SignInAsync(IdentityUser user, bool isPersistent)
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
             var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);

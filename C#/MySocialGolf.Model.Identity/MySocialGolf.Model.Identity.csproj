@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MsgUser.cs" />
+    <Compile Include="IdentityUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

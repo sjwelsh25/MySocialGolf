@@ -223,6 +223,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ManageUserViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
+    <Compile Include="ViewModels\MyProfileViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\UserGolfRoundListViewModel.cs" />
     <Compile Include="ViewModels\TestApiViewModel.cs" />
@@ -322,6 +323,7 @@
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\MyProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MySocialGolf.DTOManager\MySocialGolf.DtoManager.csproj">
@@ -331,6 +333,10 @@
     <ProjectReference Include="..\MySocialGolf.DTOModel\MySocialGolf.DtoModel.csproj">
       <Project>{0246314e-1acd-4415-b041-a19570e98f24}</Project>
       <Name>MySocialGolf.DtoModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MySocialGolf.Extensions\MySocialGolf.Extensions.csproj">
+      <Project>{3406F6E3-45E6-458A-B5F5-843909E95B64}</Project>
+      <Name>MySocialGolf.Extensions</Name>
     </ProjectReference>
     <ProjectReference Include="..\MySocialGolf.Manager.Identity\MySocialGolf.Manager.Identity.csproj">
       <Project>{ae59a2b1-8e9e-4590-9183-1724f6d7953d}</Project>

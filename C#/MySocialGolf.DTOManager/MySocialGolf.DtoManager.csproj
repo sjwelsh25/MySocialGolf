@@ -50,6 +50,7 @@
     <Compile Include="DBConnectionManager.cs" />
     <Compile Include="TestApiDtoManager.cs" />
     <Compile Include="GoffRoundsDtoManager.cs" />
+    <Compile Include="ExternalLoginsDtoManager.cs" />
     <Compile Include="UsersDtoManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

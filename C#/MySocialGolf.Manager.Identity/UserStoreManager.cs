@@ -14,7 +14,7 @@ using MySocialGolf.Extensions;
 
 namespace MySocialGolf.Manager.Identity
 {
-    public class UserStoreManager: IUserStore<MsgUser>, IUserLoginStore<MsgUser>, IUserPasswordStore<MsgUser>, IUserSecurityStampStore<MsgUser>
+    public class UserStoreManager: IUserStore<IdentityUser>, IUserLoginStore<IdentityUser>, IUserPasswordStore<IdentityUser>, IUserSecurityStampStore<IdentityUser>
     {
         private readonly string connectionString;
 
@@ -24,7 +24,7 @@ namespace MySocialGolf.Manager.Identity
         }
 
         #region IUserStore
-        public virtual Task CreateAsync(MsgUser user)
+        public virtual Task CreateAsync(IdentityUser user)
         {
             if (user == null)
                 throw new ArgumentNullException("user");
@@ -45,7 +45,7 @@ namespace MySocialGolf.Manager.Identity
             });
         }
 
-        public virtual Task DeleteAsync(MsgUser user)
+        public virtual Task DeleteAsync(IdentityUser user)
         {
             if (user == null)
                 throw new ArgumentNullException("user");
@@ -59,7 +59,7 @@ namespace MySocialGolf.Manager.Identity
             });
         }
 
-        public virtual Task<MsgUser> FindByIdAsync(string userId)
+        public virtual Task<IdentityUser> FindByIdAsync(string userId)
         {
             if (string.IsNullOrWhiteSpace(userId))
                 throw new ArgumentNullException("userId");
@@ -72,7 +72,7 @@ namespace MySocialGolf.Manager.Identity
             {
                 var uDtomngr = new UserDtoManager();
                 var uDto = uDtomngr.GetUser(userId.IToInt());
-                var myUser = new MsgUser();
+                var myUser = new IdentityUser();
 
                 myUser.UserId = uDto.UserId.ToString();
                 myUser.UserName = uDto.UserName;
@@ -84,7 +84,7 @@ namespace MySocialGolf.Manager.Identity
             });
         }
 
-        public virtual Task<MsgUser> FindByNameAsync(string userName)
+        public virtual Task<IdentityUser> FindByNameAsync(string userName)
         {
             if (string.IsNullOrWhiteSpace(userName))
                 throw new ArgumentNullException("userName");
@@ -97,7 +97,7 @@ namespace MySocialGolf.Manager.Identity
                 if (uDto == null)
                     return null;
 
-                return new MsgUser()
+                return new IdentityUser()
                 {
                     UserId = uDto.UserId.ToString(),
                     UserName = uDto.UserName,
@@ -110,7 +110,7 @@ namespace MySocialGolf.Manager.Identity
             });
         }
 
-        public virtual Task UpdateAsync(MsgUser user)
+        public virtual Task UpdateAsync(IdentityUser user)
         {
             if (user == null)
                 throw new ArgumentNullException("user");
@@ -124,7 +124,7 @@ namespace MySocialGolf.Manager.Identity
         #endregion
 
         #region IUserLoginStore
-        public virtual Task AddLoginAsync(MsgUser user, UserLoginInfo login)
+        public virtual Task AddLoginAsync(IdentityUser user, UserLoginInfo login)
         {
             if (user == null)
                 throw new ArgumentNullException("user");
@@ -140,7 +140,7 @@ namespace MySocialGolf.Manager.Identity
             });
         }
 
-        public virtual Task<MsgUser> FindAsync(UserLoginInfo login)
+        public virtual Task<IdentityUser> FindAsync(UserLoginInfo login)
         {
             if (login == null)
                 throw new ArgumentNullException("login");
@@ -148,24 +148,28 @@ namespace MySocialGolf.Manager.Identity
             return Task.Factory.StartNew(() =>
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
-                    return connection.Query<MsgUser>("select u.* from Users u inner join ExternalLogins l on l.UserId = u.UserId where l.LoginProvider = @loginProvider and l.ProviderKey = @providerKey",
+                    return connection.Query<IdentityUser>("select u.* from Users u inner join ExternalLogins l on l.UserId = u.UserId where l.LoginProvider = @loginProvider and l.ProviderKey = @providerKey",
                         login).SingleOrDefault();
             });
         }
 
-        public virtual Task<IList<UserLoginInfo>> GetLoginsAsync(MsgUser user)
+        public virtual Task<IList<UserLoginInfo>> GetLoginsAsync(IdentityUser user)
         {
             if (user == null)
                 throw new ArgumentNullException("user");
 
+            var elDtomngr = new ExternalLoginsDtoManager();
+            var elDto = elDtomngr.ListExternalLogins(user.UserId.IToInt());
+
             return Task.Factory.StartNew(() =>
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                    return (IList<UserLoginInfo>)connection.Query<UserLoginInfo>("select LoginProvider, ProviderKey from ExternalLogins where UserId = @userId", new { user.UserId }).ToList();
+                return (IList<UserLoginInfo>)elDto.OfType<UserLoginInfo>().ToList();
+                //using (SqlConnection connection = new SqlConnection(connectionString))
+                //    return (IList<UserLoginInfo>)connection.Query<UserLoginInfo>("select LoginProvider, ProviderKey from ExternalLogins where UserId = @userId", new { user.UserId }).ToList();
             });
         }
 
-        public virtual Task RemoveLoginAsync(MsgUser user, UserLoginInfo login)
+        public virtual Task RemoveLoginAsync(IdentityUser user, UserLoginInfo login)
         {
             if (user == null)
                 throw new ArgumentNullException("user");
@@ -183,7 +187,7 @@ namespace MySocialGolf.Manager.Identity
         #endregion
 
         #region IUserPasswordStore
-        public virtual Task<string> GetPasswordHashAsync(MsgUser user)
+        public virtual Task<string> GetPasswordHashAsync(IdentityUser user)
         {
             if (user == null)
                 throw new ArgumentNullException("user");
@@ -191,12 +195,12 @@ namespace MySocialGolf.Manager.Identity
             return Task.FromResult(user.PasswordHash);
         }
 
-        public virtual Task<bool> HasPasswordAsync(MsgUser user)
+        public virtual Task<bool> HasPasswordAsync(IdentityUser user)
         {
             return Task.FromResult(!string.IsNullOrEmpty(user.PasswordHash));
         }
 
-        public virtual Task SetPasswordHashAsync(MsgUser user, string passwordHash)
+        public virtual Task SetPasswordHashAsync(IdentityUser user, string passwordHash)
         {
             if (user == null)
                 throw new ArgumentNullException("user");
@@ -209,7 +213,7 @@ namespace MySocialGolf.Manager.Identity
         #endregion
 
         #region IUserSecurityStampStore
-        public virtual Task<string> GetSecurityStampAsync(MsgUser user)
+        public virtual Task<string> GetSecurityStampAsync(IdentityUser user)
         {
             if (user == null)
                 throw new ArgumentNullException("user");
@@ -217,7 +221,7 @@ namespace MySocialGolf.Manager.Identity
             return Task.FromResult(user.SecurityStamp);
         }
 
-        public virtual Task SetSecurityStampAsync(MsgUser user, string stamp)
+        public virtual Task SetSecurityStampAsync(IdentityUser user, string stamp)
         {
             if (user == null)
                 throw new ArgumentNullException("user");

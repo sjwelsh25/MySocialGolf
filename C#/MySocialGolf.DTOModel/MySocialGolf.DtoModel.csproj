@@ -52,6 +52,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserDto.cs" />
+    <Compile Include="ExternalLoginsDto.cs" />
+    <Compile Include="_ExternalLoginsDto.cs" />
     <Compile Include="_GolfCourseDto.cs" />
     <Compile Include="_GolfRoundDto.cs" />
     <Compile Include="_TestApiDto.cs" />

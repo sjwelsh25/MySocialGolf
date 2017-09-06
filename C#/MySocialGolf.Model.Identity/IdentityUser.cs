@@ -3,7 +3,10 @@ using Microsoft.AspNet.Identity;
 
 namespace MySocialGolf.Model.Identity
 {
-    public class MsgUser : IUser
+    /// <summary>
+    /// Simple Wrapper around the Microsoft.Asp.Identity.IUser for Owin support. SW 5/9/17
+    /// </summary>
+    public class IdentityUser : IUser
     {
         public string UserId { get; set; }
         public string UserName { get; set; }
