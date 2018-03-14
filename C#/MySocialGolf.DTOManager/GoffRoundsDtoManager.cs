@@ -16,23 +16,23 @@ namespace MySocialGolf.DtoManager
         {
         }
 
-        public GolfRoundDto GetGolfRound(int golfRoundId)
+        public GolfRoundDataModel GetGolfRound(int golfRoundId)
         {
             DynamicParameters p = new DynamicParameters();
             p.Add("@GolfRoundID", golfRoundId);
-            return BaseSqlConnection.Query<GolfRoundDto>("GolfRoundList", p, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
+            return BaseSqlConnection.Query<GolfRoundDataModel>("GolfRoundList", p, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
         }
 
-        public IEnumerable<GolfRoundDto> ListGolfRoundForUser(int userId, int golfRoundId = 0)
+        public IEnumerable<GolfRoundDataModel> ListGolfRoundForUser(int userId, int golfRoundId = 0)
         {
             DynamicParameters p = new DynamicParameters();
             // p.Add("@Surname", us.Surname);
             p.Add("@UserId", userId);
             p.Add("@GolfRoundID", golfRoundId);
-            return BaseSqlConnection.Query<GolfRoundDto>("GolfRoundList", p, commandType: System.Data.CommandType.StoredProcedure);
+            return BaseSqlConnection.Query<GolfRoundDataModel>("GolfRoundList", p, commandType: System.Data.CommandType.StoredProcedure);
         }
 
-        public bool UpdateGolfRound(GolfRoundDto round)
+        public bool UpdateGolfRound(GolfRoundDataModel round)
         {
             DynamicParameters p = new DynamicParameters();
             p.Add("@UserId", round.UserId);
@@ -51,7 +51,7 @@ namespace MySocialGolf.DtoManager
             return true;
         }
 
-        public bool AddGolfRound(GolfRoundDto round)
+        public bool AddGolfRound(GolfRoundDataModel round)
         {
             DynamicParameters p = new DynamicParameters();
             p.Add("@UserId", round.UserId);
@@ -70,7 +70,7 @@ namespace MySocialGolf.DtoManager
             return true;
         }
 
-        public bool DeleteGolfRound(GolfRoundDto round)
+        public bool DeleteGolfRound(GolfRoundDataModel round)
         {
             DynamicParameters p = new DynamicParameters();
             p.Add("@GolfRoundId", round.UserId);

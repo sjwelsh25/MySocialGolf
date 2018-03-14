@@ -3,7 +3,7 @@ using MySocialGolf.DtoModel;
 
 namespace MySocialGolf.Web.API.ViewModels
 {
-    public class MyProfileViewModel: UserDto
+    public class MyProfileViewModel: UserDataModel
     {
 
     }

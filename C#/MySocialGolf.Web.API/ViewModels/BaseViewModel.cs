@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using MySocialGolf.DtoModel;
-
 namespace MySocialGolf.Web.Models.ViewModels
 {
-    public class TestApiListViewModel
+    public class BaseViewModel
     {
-        public IEnumerable<TestApiDataModel> TestApiDTOList { get; set; }
+        public string SubmitMessage { get; set; } = "";
     }
 }

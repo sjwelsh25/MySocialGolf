@@ -207,6 +207,7 @@
     <Compile Include="Controllers\GolfAdminController.cs" />
     <Compile Include="Controllers\RoundsController.cs" />
     <Compile Include="MvcControllers\AccountController.cs" />
+    <Compile Include="MvcControllers\AdminController.cs" />
     <Compile Include="MvcControllers\HomeController.cs" />
     <Compile Include="MvcControllers\RoundController.cs" />
     <Compile Include="MvcControllers\TestAPIController.cs" />
@@ -219,6 +220,7 @@
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ManageUserViewModel.cs" />
@@ -228,6 +230,7 @@
     <Compile Include="ViewModels\UserGolfRoundListViewModel.cs" />
     <Compile Include="ViewModels\TestApiViewModel.cs" />
     <Compile Include="ViewModels\UserListViewModel.cs" />
+    <Compile Include="ViewModels\AdminTestEmailViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -324,6 +327,8 @@
     <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Views\Account\MyProfile.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Email.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MySocialGolf.DTOManager\MySocialGolf.DtoManager.csproj">

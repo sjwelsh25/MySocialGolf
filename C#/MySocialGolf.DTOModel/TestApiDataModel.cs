@@ -8,7 +8,7 @@ using MySocialGolf.Extensions;
 
 namespace MySocialGolf.DtoModel
 {
-    public class TestApiDto : _TestApiDto
+    public class TestApiDataModel : _TestApiDataModel
     {
         public string LastLogResponse { get; set; } = "";
         public string LastStatusCode { get; set; }

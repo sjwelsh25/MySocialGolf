@@ -7,9 +7,9 @@ using System.ComponentModel;
 
 namespace MySocialGolf.DtoModel
 {
-    public class BaseDto
+    public class BaseDataModel
     {
-        public BaseDto()
+        public BaseDataModel()
         {
             SubmitMessage = "";
         }

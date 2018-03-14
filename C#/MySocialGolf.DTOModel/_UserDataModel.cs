@@ -6,7 +6,7 @@ namespace MySocialGolf.DtoModel
     /// Represents a User.
     /// NOTE: This class is generated from a T4 template - you should not modify it manually.
     /// </summary>
-    public class _UserDto: BaseDataModel 
+    public class _UserDataModel: BaseDataModel 
     {
         public int UserId { get; set; }
         public string UserName { get; set; }

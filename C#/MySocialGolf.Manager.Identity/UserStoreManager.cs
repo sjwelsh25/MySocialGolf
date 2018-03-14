@@ -31,7 +31,7 @@ namespace MySocialGolf.Manager.Identity
 
             return Task.Factory.StartNew(() => {
                 var uDtomngr = new UserDtoManager();
-                var uDto = new UserDto()
+                var uDto = new UserDataModel()
                 {
                     UserName = user.UserName,
                     PasswordHash = user.PasswordHash,

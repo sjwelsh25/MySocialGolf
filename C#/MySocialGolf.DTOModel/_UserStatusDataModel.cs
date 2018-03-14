@@ -6,7 +6,7 @@ namespace MySocialGolf.DtoModel
     /// Represents a UserStatus.
     /// NOTE: This class is generated from a T4 template - you should not modify it manually.
     /// </summary>
-    public class _UserStatusDto: BaseDataModel 
+    public class _UserStatusDataModel: BaseDataModel 
     {
         public int UserStatusId { get; set; }
         public string Description { get; set; }

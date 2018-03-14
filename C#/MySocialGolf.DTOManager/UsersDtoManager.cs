@@ -17,29 +17,29 @@ namespace MySocialGolf.DtoManager
         }
 
         #region User
-        public UserDto GetUser(int id)
+        public UserDataModel GetUser(int id)
         {
             DynamicParameters p = new DynamicParameters();
             p.Add("@UserId", id);
-            return BaseSqlConnection.Query<UserDto>("UserList", p, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
+            return BaseSqlConnection.Query<UserDataModel>("UserList", p, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
         }
 
-        public UserDto GetUserByUserName(string userName)
+        public UserDataModel GetUserByUserName(string userName)
         {
             DynamicParameters p = new DynamicParameters();
             p.Add("@UserName", userName);
-            return BaseSqlConnection.Query<UserDto>("UserList", p, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
+            return BaseSqlConnection.Query<UserDataModel>("UserList", p, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
         }
 
-        public IEnumerable<UserDto> ListUser(UserSearchModel us)
+        public IEnumerable<UserDataModel> ListUser(UserSearchModel us)
         {
             DynamicParameters p = new DynamicParameters();
             // p.Add("@Surname", us.Surname);
-            IEnumerable<UserDto> result = BaseSqlConnection.Query<UserDto>("UserList", p, commandType: System.Data.CommandType.StoredProcedure);
+            IEnumerable<UserDataModel> result = BaseSqlConnection.Query<UserDataModel>("UserList", p, commandType: System.Data.CommandType.StoredProcedure);
             return result;
         }
 
-        public bool AddUser(UserDto user)
+        public bool AddUser(UserDataModel user)
         {
             DynamicParameters p = new DynamicParameters();
             p.Add("@UserName", user.UserName);
@@ -71,7 +71,7 @@ namespace MySocialGolf.DtoManager
         }
         #endregion
 
-        public bool UpdateUser(UserDto user)
+        public bool UpdateUser(UserDataModel user)
         {
             DynamicParameters p = new DynamicParameters();
             p.Add("@Surname", user.Surname);
@@ -88,21 +88,21 @@ namespace MySocialGolf.DtoManager
         }
 
         #region Golf Round
-        public GolfRoundDto GetUserGolfRound(int userId)
+        public GolfRoundDataModel GetUserGolfRound(int userId)
         {
             DynamicParameters p = new DynamicParameters();
             p.Add("@UserID", userId);
-            return BaseSqlConnection.Query<GolfRoundDto>("UserGolfRoundList", p, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
+            return BaseSqlConnection.Query<GolfRoundDataModel>("UserGolfRoundList", p, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
         }
 
-        public IEnumerable<GolfRoundDto> ListUserGolfRound()
+        public IEnumerable<GolfRoundDataModel> ListUserGolfRound()
         {
             DynamicParameters p = new DynamicParameters();
             // p.Add("@Surname", us.Surname);
-            return BaseSqlConnection.Query<GolfRoundDto>("UserGolfRoundList", p, commandType: System.Data.CommandType.StoredProcedure);
+            return BaseSqlConnection.Query<GolfRoundDataModel>("UserGolfRoundList", p, commandType: System.Data.CommandType.StoredProcedure);
         }
 
-        public bool SaveUserGolfRound(GolfRoundDto round)
+        public bool SaveUserGolfRound(GolfRoundDataModel round)
         {
             DynamicParameters p = new DynamicParameters();
             p.Add("@UserID", round.UserId);
@@ -121,7 +121,7 @@ namespace MySocialGolf.DtoManager
             return true;
         }
 
-        public bool DeleteUserGolfRound(GolfRoundDto round)
+        public bool DeleteUserGolfRound(GolfRoundDataModel round)
         {
             throw new NotImplementedException();
         }

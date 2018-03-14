@@ -6,7 +6,7 @@ namespace MySocialGolf.DtoModel
     /// Represents a TestApi.
     /// NOTE: This class is generated from a T4 template - you should not modify it manually.
     /// </summary>
-    public class _TestApiDto: BaseDataModel 
+    public class _TestApiDataModel: BaseDataModel 
     {
         public int TestApiId { get; set; }
         public Guid TestApiGuid { get; set; }

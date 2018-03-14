@@ -6,7 +6,7 @@ namespace MySocialGolf.DtoModel
     /// Represents a ExternalLogins.
     /// NOTE: This class is generated from a T4 template - you should not modify it manually.
     /// </summary>
-    public class _ExternalLoginsDto: BaseDataModel 
+    public class _ExternalLoginsDataModel: BaseDataModel 
     {
         public Guid ExternalLoginId { get; set; }
         public Guid UserId { get; set; }

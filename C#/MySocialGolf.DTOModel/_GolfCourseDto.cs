@@ -6,7 +6,7 @@ namespace MySocialGolf.DtoModel
     /// Represents a GolfCourse.
     /// NOTE: This class is generated from a T4 template - you should not modify it manually.
     /// </summary>
-    public class _GolfCourseDto: BaseDto 
+    public class _GolfCourseDto: BaseDataModel 
     {
         public int GolfCourseId { get; set; }
         public string CourseName { get; set; }

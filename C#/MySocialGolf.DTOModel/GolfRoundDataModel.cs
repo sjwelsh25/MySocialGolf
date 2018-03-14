@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MySocialGolf.DtoModel
 {
-    public class GolfRoundDto: _GolfRoundDto
+    public class GolfRoundDataModel: _GolfRoundDataModel
     {
         //public int? NewUserGolfRoundID { get; set; }
         //[Display(Name = "Golf Course Name")]

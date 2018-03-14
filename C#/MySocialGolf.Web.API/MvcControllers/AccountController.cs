@@ -107,7 +107,7 @@ namespace MySocialGolf.Web.Controllers
         public ActionResult MyProfile()
         {
             UserDtoManager uDtoMngr = new UserDtoManager();
-            UserDto uDto = uDtoMngr.GetUser(User.Identity.GetUserId().IToInt());
+            UserDataModel uDto = uDtoMngr.GetUser(User.Identity.GetUserId().IToInt());
             MyProfileViewModel mpvm = uDto.ICopyObject<MyProfileViewModel>();
             return View(mpvm);
         }
@@ -120,7 +120,7 @@ namespace MySocialGolf.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var uDto = model.ICopyObject<UserDto>();
+                var uDto = model.ICopyObject<UserDataModel>();
                 uDto.UserId = User.Identity.GetUserId().IToInt(); // may not be in VM as View does not display the user Id - add it again
                 // Add insert logic here
                 var usrMngr = new UserDtoManager();

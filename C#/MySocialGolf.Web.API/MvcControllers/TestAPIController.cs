@@ -24,7 +24,7 @@ namespace MySocialGolf.Web.API.MvcControllers
         public JsonResult RunTest(int id)
         {
             TestApiManager taMngr = new TestApiManager();
-            TestApiDto taDto = taMngr.TestApi(id); // do The Restful call
+            TestApiDataModel taDto = taMngr.TestApi(id); // do The Restful call
 
             return Json(taDto);
         }
@@ -43,7 +43,7 @@ namespace MySocialGolf.Web.API.MvcControllers
 
         // POST: TestAPI/Create
         [HttpPost]
-        public ActionResult Add(TestApiDto dto)
+        public ActionResult Add(TestApiDataModel dto)
         {
             try
             {
@@ -62,13 +62,13 @@ namespace MySocialGolf.Web.API.MvcControllers
         public ActionResult Edit(int id)
         {
             TestApiDtoManager taDtoMngr = new TestApiDtoManager();
-            TestApiDto taDto = taDtoMngr.ListTestApi(id).First<TestApiDto>();
+            TestApiDataModel taDto = taDtoMngr.ListTestApi(id).First<TestApiDataModel>();
             return View(taDto);
         }
 
         // POST: TestAPI/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, TestApiDto taDto)
+        public ActionResult Edit(int id, TestApiDataModel taDto)
         {
             try
             {

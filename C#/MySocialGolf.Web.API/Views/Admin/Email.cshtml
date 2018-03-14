@@ -1,0 +1,66 @@
+﻿@model MySocialGolf.Web.Models.ViewModels.AdminTestEmailViewModel
+
+@{
+    ViewBag.Title = "Email";
+}
+
+<h2>Email Tester</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ToEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.ToEmail)
+                @Html.ValidationMessageFor(model => model.ToEmail)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmailSubject, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmailSubject)
+                @Html.ValidationMessageFor(model => model.EmailSubject)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmailBody, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmailBody)
+                @Html.ValidationMessageFor(model => model.EmailBody)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Email" class="btn btn-default" formaction="Email" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @if (Model != null && Model.SubmitMessage != "")
+            {
+                <div class="alert alert-success">
+                    @Html.DisplayFor(model => model.SubmitMessage)
+                </div>
+            }
+        </div>
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Admin", "Admin")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

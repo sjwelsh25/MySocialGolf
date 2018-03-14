@@ -16,11 +16,11 @@ namespace MySocialGolf.DtoManager
         {
         }
 
-        public IEnumerable<ExternalLoginsDto> ListExternalLogins(int userId)
+        public IEnumerable<ExternalLoginsDataModel> ListExternalLogins(int userId)
         {
             DynamicParameters p = new DynamicParameters();
             p.Add("@UserId", userId);
-            IEnumerable<ExternalLoginsDto> result = BaseSqlConnection.Query<ExternalLoginsDto>("ExternalLoginsList", p, commandType: System.Data.CommandType.StoredProcedure);
+            IEnumerable<ExternalLoginsDataModel> result = BaseSqlConnection.Query<ExternalLoginsDataModel>("ExternalLoginsList", p, commandType: System.Data.CommandType.StoredProcedure);
             return result;
         }
     }

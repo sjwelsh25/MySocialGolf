@@ -1,5 +1,12 @@
-﻿29/7/17
-- 
+﻿14/3/18
+- Change to DataModels and DataManagers assemblies
+- Get all Adds working 
+- Have a simple User wrapper - understand it
+
+6/12/17
+- Add Admin page (if admin login only)
+- investigate mailgun email service to email friends and also forgot password function
+
 
 26/7/17
 - - Implement AddRound() Test and GetRounds()

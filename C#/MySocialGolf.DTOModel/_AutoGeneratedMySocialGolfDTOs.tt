@@ -31,9 +31,9 @@
     string classNamespace = "MySocialGolf.DtoModel";
     // The destination folder for the generated classes, relative to this file's location.
     string destinationFolder = "";
-	string tableNameFileSuffix = "Dto";
+	string tableNameFileSuffix = "DataModel";
 	string tableNameFilePrefix = "_";
-	string tableNameClassSuffix = "Dto";
+	string tableNameClassSuffix = "DataModel";
 	string tableNameClassPrefix = "_";
  
     // Loop over each table and create a class file!

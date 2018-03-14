@@ -6,6 +6,6 @@ namespace MySocialGolf.Web.Models.ViewModels
 {
     public class UserListViewModel
     {
-        public IEnumerable<UserDto> UserDTOList { get; set; }
+        public IEnumerable<UserDataModel> UserDTOList { get; set; }
     }
 }

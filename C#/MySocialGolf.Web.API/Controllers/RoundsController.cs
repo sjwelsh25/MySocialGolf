@@ -16,12 +16,12 @@ namespace MySocialGolf.Web.API.Controllers
         /// <summary>
         /// Get a list of GolfRounds for a User
         /// </summary>
-        /// <returns>List of GolfRoundDtos</returns>
+        /// <returns>List of GolfRoundDataModels</returns>
         [Route("api/users/{userid}/rounds")]
         public IHttpActionResult GetRoundsForUser(int userId)
         {
             var grMngr = new GolfRoundsDtoManager();
-            IEnumerable<GolfRoundDto> roundsList;
+            IEnumerable<GolfRoundDataModel> roundsList;
             try
             {
                 roundsList = grMngr.ListGolfRoundForUser(userId);// all for this user
@@ -41,11 +41,11 @@ namespace MySocialGolf.Web.API.Controllers
         /// <summary>
         /// Get a GolfRound
         /// </summary>
-        /// <returns>GolfRoundDto</returns>
+        /// <returns>GolfRoundDataModel</returns>
         public IHttpActionResult Get(int roundId = 0)
         {
             var grMngr = new GolfRoundsDtoManager();
-            GolfRoundDto round;
+            GolfRoundDataModel round;
             try
             {
                 round = grMngr.GetGolfRound(roundId);
@@ -65,9 +65,9 @@ namespace MySocialGolf.Web.API.Controllers
         /// <summary>
         /// Add a GolfRound
         /// </summary>
-        /// <returns>GolfRoundDto</returns>
+        /// <returns>GolfRoundDataModel</returns>
         [Route("api/users/{userid}/rounds")]
-        public IHttpActionResult Post(int userId, GolfRoundDto golfRound)
+        public IHttpActionResult Post(int userId, GolfRoundDataModel golfRound)
         {
             {
                 var grMngr = new GolfRoundsDtoManager();
@@ -88,7 +88,7 @@ namespace MySocialGolf.Web.API.Controllers
         /// Update a GolfRound
         /// </summary>
         /// <returns></returns>
-        public void Put(GolfRoundDto golfRound)
+        public void Put(GolfRoundDataModel golfRound)
         {
 
         }

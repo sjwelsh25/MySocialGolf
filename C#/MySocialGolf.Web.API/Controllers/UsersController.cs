@@ -16,7 +16,7 @@ namespace MySocialGolf.Web.API
         public IHttpActionResult Get()
         {
             var udm = new UserDtoManager();
-            IEnumerable<UserDto> userList = null;
+            IEnumerable<UserDataModel> userList = null;
             try
             {
                 userList = udm.ListUser(null); // All
@@ -40,7 +40,7 @@ namespace MySocialGolf.Web.API
         public IHttpActionResult Get(int id)
         {
             var udm = new UserDtoManager();
-            UserDto user;
+            UserDataModel user;
             try
             {
                 user = udm.GetUser(id);
@@ -61,7 +61,7 @@ namespace MySocialGolf.Web.API
         /// Add a User
         /// </summary>
         /// <returns></returns>
-        public IHttpActionResult Post(UserDto userDto)
+        public IHttpActionResult Post(UserDataModel userDto)
         {
             var udm = new UserDtoManager();
             try
@@ -81,7 +81,7 @@ namespace MySocialGolf.Web.API
         /// Update a User
         /// </summary>
         /// <returns></returns>
-        public void Put(UserDto userDto)
+        public void Put(UserDataModel userDto)
         {
             var udm = new UserDtoManager();
             udm.UpdateUser(userDto);

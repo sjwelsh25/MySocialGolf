@@ -6,7 +6,7 @@ namespace MySocialGolf.DtoModel
     /// Represents a GolfRound.
     /// NOTE: This class is generated from a T4 template - you should not modify it manually.
     /// </summary>
-    public class _GolfRoundDto: BaseDataModel 
+    public class _GolfRoundDataModel: BaseDataModel 
     {
         public int GolfRoundId { get; set; }
         public int? UserId { get; set; }

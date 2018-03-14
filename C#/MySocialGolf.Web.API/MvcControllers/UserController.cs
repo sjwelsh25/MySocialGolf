@@ -38,7 +38,7 @@ namespace MySocialGolf.Web.Controllers
 
         // POST: User/Add
         [HttpPost]
-        public ActionResult Add(UserDto user)
+        public ActionResult Add(UserDataModel user)
         {
             // Add insert logic here
             var usrMngr = new UserDtoManager();

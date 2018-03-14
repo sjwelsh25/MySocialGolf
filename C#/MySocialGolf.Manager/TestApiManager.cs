@@ -10,10 +10,10 @@ namespace MySocialGolf.Manager
 {
     public class TestApiManager
     {
-        public TestApiDto TestApi(int testApiID)
+        public TestApiDataModel TestApi(int testApiID)
         {
             TestApiDtoManager taDtoMngr = new TestApiDtoManager();
-            TestApiDto taDto = taDtoMngr.ListTestApi(testApiID).FirstOrDefault<TestApiDto>();
+            TestApiDataModel taDto = taDtoMngr.ListTestApi(testApiID).FirstOrDefault<TestApiDataModel>();
 
             RestCallModel rcModel = new RestCallModel();
             rcModel.Url = taDto.TestUrl;
@@ -26,7 +26,7 @@ namespace MySocialGolf.Manager
             taDto.ResponseToLog = rcModel.ResponseMessage;
             taDto.LastStatusCode = rcModel.StatusCode.ToString();
             taDtoMngr.AddTestAPILog(taDto);
-            taDto = taDtoMngr.ListTestApi(testApiID).First<TestApiDto>();
+            taDto = taDtoMngr.ListTestApi(testApiID).First<TestApiDataModel>();
 
             // Return an appropriate test message to the client web page
             if (rcModel.StatusCode == "200")

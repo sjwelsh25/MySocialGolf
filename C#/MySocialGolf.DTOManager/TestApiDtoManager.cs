@@ -14,22 +14,22 @@ namespace MySocialGolf.DtoManager
         {
         }
 
-        public IEnumerable<TestApiDto> ListTestApi(int testAPIID = 0)
+        public IEnumerable<TestApiDataModel> ListTestApi(int testAPIID = 0)
         {
             DynamicParameters p = new DynamicParameters();
             p.Add("@TestApiId", testAPIID);
-            IEnumerable<TestApiDto> result = BaseSqlConnection.Query<TestApiDto>("TestAPIList", p, commandType: CommandType.StoredProcedure);
+            IEnumerable<TestApiDataModel> result = BaseSqlConnection.Query<TestApiDataModel>("TestAPIList", p, commandType: CommandType.StoredProcedure);
             return result;
         }
 
-        public TestApiDto GetTestApi(int testAPIID)
+        public TestApiDataModel GetTestApi(int testAPIID)
         {
             DynamicParameters p = new DynamicParameters();
             p.Add("@TestApiId", testAPIID);
-            return BaseSqlConnection.Query<TestApiDto>("TestAPIList", p, commandType: CommandType.StoredProcedure).FirstOrDefault();
+            return BaseSqlConnection.Query<TestApiDataModel>("TestAPIList", p, commandType: CommandType.StoredProcedure).FirstOrDefault();
         }
 
-        public bool AddTestApi(TestApiDto taDTO)
+        public bool AddTestApi(TestApiDataModel taDTO)
         {
             DynamicParameters p = new DynamicParameters();
             p.Add("@TestName", taDTO.TestName);
@@ -48,7 +48,7 @@ namespace MySocialGolf.DtoManager
             return true;
         }
 
-        public bool AddTestAPILog(TestApiDto taDTO)
+        public bool AddTestAPILog(TestApiDataModel taDTO)
         {
             DynamicParameters p = new DynamicParameters();
             p.Add("@TestApiId", taDTO.TestApiId);
@@ -58,7 +58,7 @@ namespace MySocialGolf.DtoManager
             return true;
         }
 
-        public bool UpdateTestApi(TestApiDto taDTO)
+        public bool UpdateTestApi(TestApiDataModel taDTO)
         {
             DynamicParameters p = new DynamicParameters();
             p.Add("@TestApiId", taDTO.TestApiId);
@@ -88,7 +88,7 @@ namespace MySocialGolf.DtoManager
 
         public bool CloneTestApi(int testApiId)
         {
-            TestApiDto ta = GetTestApi(testApiId);
+            TestApiDataModel ta = GetTestApi(testApiId);
             ta.TestName += "Clone";
             ta.SortOrder++;
             AddTestApi(ta);

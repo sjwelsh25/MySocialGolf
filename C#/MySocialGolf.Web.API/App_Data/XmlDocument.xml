@@ -498,21 +498,21 @@
             <summary>
             Get a list of GolfRounds for a User
             </summary>
-            <returns>List of GolfRoundDtos</returns>
+            <returns>List of GolfRoundDataModels</returns>
         </member>
         <member name="M:MySocialGolf.Web.API.Controllers.RoundsController.Get(System.Int32)">
             <summary>
             Get a GolfRound
             </summary>
-            <returns>GolfRoundDto</returns>
+            <returns>GolfRoundDataModel</returns>
         </member>
-        <member name="M:MySocialGolf.Web.API.Controllers.RoundsController.Post(System.Int32,MySocialGolf.DtoModel.GolfRoundDto)">
+        <member name="M:MySocialGolf.Web.API.Controllers.RoundsController.Post(System.Int32,MySocialGolf.DtoModel.GolfRoundDataModel)">
             <summary>
             Add a GolfRound
             </summary>
-            <returns>GolfRoundDto</returns>
+            <returns>GolfRoundDataModel</returns>
         </member>
-        <member name="M:MySocialGolf.Web.API.Controllers.RoundsController.Put(MySocialGolf.DtoModel.GolfRoundDto)">
+        <member name="M:MySocialGolf.Web.API.Controllers.RoundsController.Put(MySocialGolf.DtoModel.GolfRoundDataModel)">
             <summary>
             Update a GolfRound
             </summary>
@@ -536,13 +536,13 @@
             </summary>
             <returns>UserDto</returns> 
         </member>
-        <member name="M:MySocialGolf.Web.API.UsersController.Post(MySocialGolf.DtoModel.UserDto)">
+        <member name="M:MySocialGolf.Web.API.UsersController.Post(MySocialGolf.DtoModel.UserDataModel)">
             <summary>
             Add a User
             </summary>
             <returns></returns>
         </member>
-        <member name="M:MySocialGolf.Web.API.UsersController.Put(MySocialGolf.DtoModel.UserDto)">
+        <member name="M:MySocialGolf.Web.API.UsersController.Put(MySocialGolf.DtoModel.UserDataModel)">
             <summary>
             Update a User
             </summary>

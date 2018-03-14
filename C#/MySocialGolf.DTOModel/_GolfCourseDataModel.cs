@@ -3,13 +3,15 @@ using System;
 namespace MySocialGolf.DtoModel
 {
     /// <summary>
-    /// Represents a UserStatus.
+    /// Represents a GolfCourse.
     /// NOTE: This class is generated from a T4 template - you should not modify it manually.
     /// </summary>
-    public class _UserStatusDto: BaseDataModel 
+    public class _GolfCourseDataModel: BaseDataModel 
     {
-        public int UserStatusId { get; set; }
-        public string Description { get; set; }
+        public int GolfCourseId { get; set; }
+        public string CourseName { get; set; }
+        public string Address { get; set; }
+        public int? CoursePar { get; set; }
         public int? CreatedById { get; set; }
         public DateTime? CreatedDateTime { get; set; }
         public int? ModifiedById { get; set; }

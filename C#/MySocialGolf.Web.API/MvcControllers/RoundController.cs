@@ -37,7 +37,7 @@ namespace MySocialGolf.Web.Controllers
 
         // POST: Rounds/Create
         [HttpPost]
-        public ActionResult Add(GolfRoundDto roundDTO)
+        public ActionResult Add(GolfRoundDataModel roundDTO)
         {
             GolfRoundsDtoManager usrMngr = new GolfRoundsDtoManager();
             usrMngr.UpdateGolfRound(roundDTO);
