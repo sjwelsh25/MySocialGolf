@@ -1,13 +1,8 @@
 ﻿1. Sign up for SendGrid
-sjwelsh
-sjwelsh@gmail
-harvey2525
-
 free account
 
 2. Install Nuget package:  for MySocialGolf.Manager.Email
 Install-Package SendGrid   
 
 3. Create an Api Key 
-welshmysocialgolfdev
-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
+
