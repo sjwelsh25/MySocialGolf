@@ -506,13 +506,13 @@
             </summary>
             <returns>GolfRoundDataModel</returns>
         </member>
-        <member name="M:MySocialGolf.Web.API.Controllers.RoundsController.Post(System.Int32,MySocialGolf.DtoModel.GolfRoundDataModel)">
+        <member name="M:MySocialGolf.Web.API.Controllers.RoundsController.Post(System.Int32,MySocialGolf.DataModel.GolfRoundDataModel)">
             <summary>
             Add a GolfRound
             </summary>
             <returns>GolfRoundDataModel</returns>
         </member>
-        <member name="M:MySocialGolf.Web.API.Controllers.RoundsController.Put(MySocialGolf.DtoModel.GolfRoundDataModel)">
+        <member name="M:MySocialGolf.Web.API.Controllers.RoundsController.Put(MySocialGolf.DataModel.GolfRoundDataModel)">
             <summary>
             Update a GolfRound
             </summary>
@@ -536,13 +536,13 @@
             </summary>
             <returns>UserDto</returns> 
         </member>
-        <member name="M:MySocialGolf.Web.API.UsersController.Post(MySocialGolf.DtoModel.UserDataModel)">
+        <member name="M:MySocialGolf.Web.API.UsersController.Post(MySocialGolf.DataModel.UserDataModel)">
             <summary>
             Add a User
             </summary>
             <returns></returns>
         </member>
-        <member name="M:MySocialGolf.Web.API.UsersController.Put(MySocialGolf.DtoModel.UserDataModel)">
+        <member name="M:MySocialGolf.Web.API.UsersController.Put(MySocialGolf.DataModel.UserDataModel)">
             <summary>
             Update a User
             </summary>

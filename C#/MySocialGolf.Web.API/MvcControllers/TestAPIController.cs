@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
-using MySocialGolf.DtoManager;
-using MySocialGolf.DtoModel;
+using MySocialGolf.DataManager;
+using MySocialGolf.DataModel;
 using MySocialGolf.Manager;
 using MySocialGolf.Web.Models.ViewModels;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace MySocialGolf.Web.API.MvcControllers
         // GET: TestAPI
         public ActionResult List()
         {
-            TestApiDtoManager taMngr = new TestApiDtoManager();
+            TestApiDataManager taMngr = new TestApiDataManager();
             TestApiListViewModel talvm = new TestApiListViewModel();
             talvm.TestApiDTOList = taMngr.ListTestApi();
             return View(talvm);
@@ -48,7 +48,7 @@ namespace MySocialGolf.Web.API.MvcControllers
             try
             {
                 // TODO: Add insert logic here
-                TestApiDtoManager taMngr = new TestApiDtoManager();
+                TestApiDataManager taMngr = new TestApiDataManager();
                 taMngr.AddTestApi(dto);
                 return RedirectToAction("List");
             }
@@ -61,7 +61,7 @@ namespace MySocialGolf.Web.API.MvcControllers
         // GET: TestAPI/Edit/5
         public ActionResult Edit(int id)
         {
-            TestApiDtoManager taDtoMngr = new TestApiDtoManager();
+            TestApiDataManager taDtoMngr = new TestApiDataManager();
             TestApiDataModel taDto = taDtoMngr.ListTestApi(id).First<TestApiDataModel>();
             return View(taDto);
         }
@@ -72,7 +72,7 @@ namespace MySocialGolf.Web.API.MvcControllers
         {
             try
             {
-                TestApiDtoManager taDtoMngr = new TestApiDtoManager();
+                TestApiDataManager taDtoMngr = new TestApiDataManager();
                 taDto.TestApiId = id; // doesn't get returned in vm object passed back (only input properties it seems)
                 taDtoMngr.UpdateTestApi(taDto);
 
@@ -88,7 +88,7 @@ namespace MySocialGolf.Web.API.MvcControllers
         public ActionResult Delete(int id)
         {
             // Make a Copy and then return same View
-            var taMngr = new TestApiDtoManager();
+            var taMngr = new TestApiDataManager();
             taMngr.DeleteTestApi(id);
 
             return RedirectToAction("List");
@@ -98,7 +98,7 @@ namespace MySocialGolf.Web.API.MvcControllers
         public ActionResult Clone(int id)
         {
             // Make a Copy and then return same View
-            var taMngr = new TestApiDtoManager();
+            var taMngr = new TestApiDataManager();
             taMngr.CloneTestApi(id);
 
             return RedirectToAction("List");

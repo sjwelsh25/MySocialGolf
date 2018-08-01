@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
-using MySocialGolf.DtoManager;
-using MySocialGolf.DtoModel;
+using MySocialGolf.DataManager;
+using MySocialGolf.DataModel;
 using System;
 
 namespace MySocialGolf.Web.API
@@ -15,7 +15,7 @@ namespace MySocialGolf.Web.API
         /// <returns></returns>
         public IHttpActionResult Get()
         {
-            var udm = new UserDtoManager();
+            var udm = new UserDataManager();
             IEnumerable<UserDataModel> userList = null;
             try
             {
@@ -39,7 +39,7 @@ namespace MySocialGolf.Web.API
         /// <returns>UserDto</returns> 
         public IHttpActionResult Get(int id)
         {
-            var udm = new UserDtoManager();
+            var udm = new UserDataManager();
             UserDataModel user;
             try
             {
@@ -63,7 +63,7 @@ namespace MySocialGolf.Web.API
         /// <returns></returns>
         public IHttpActionResult Post(UserDataModel userDto)
         {
-            var udm = new UserDtoManager();
+            var udm = new UserDataManager();
             try
             {
                 udm.AddUser(userDto);
@@ -83,7 +83,7 @@ namespace MySocialGolf.Web.API
         /// <returns></returns>
         public void Put(UserDataModel userDto)
         {
-            var udm = new UserDtoManager();
+            var udm = new UserDataManager();
             udm.UpdateUser(userDto);
         }
 
@@ -94,7 +94,7 @@ namespace MySocialGolf.Web.API
         /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
-            var udm = new UserDtoManager();
+            var udm = new UserDataManager();
             string result = "";
             try
             {

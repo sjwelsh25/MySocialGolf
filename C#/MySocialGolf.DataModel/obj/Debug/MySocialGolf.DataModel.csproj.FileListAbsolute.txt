@@ -1,0 +1,9 @@
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.DTOModel\bin\Debug\MySocialGolf.DataModel.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.DTOModel\bin\Debug\MySocialGolf.DataModel.pdb
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.DTOModel\bin\Debug\MySocialGolf.Extensions.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.DTOModel\bin\Debug\Newtonsoft.Json.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.DTOModel\bin\Debug\MySocialGolf.Extensions.pdb
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.DTOModel\bin\Debug\Newtonsoft.Json.xml
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.DTOModel\obj\Debug\MySocialGolf.DataModel.csprojResolveAssemblyReference.cache
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.DTOModel\obj\Debug\MySocialGolf.DataModel.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.DTOModel\obj\Debug\MySocialGolf.DataModel.pdb

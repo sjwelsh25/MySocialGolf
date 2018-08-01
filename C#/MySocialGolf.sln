@@ -5,9 +5,9 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialGolf.Web.API", "MySocialGolf.Web.API\MySocialGolf.Web.API.csproj", "{7C8A180B-B3F8-4400-AF31-3D4736ED87C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialGolf.DtoModel", "MySocialGolf.DTOModel\MySocialGolf.DtoModel.csproj", "{0246314E-1ACD-4415-B041-A19570E98F24}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialGolf.DataModel", "MySocialGolf.DataModel\MySocialGolf.DataModel.csproj", "{0246314E-1ACD-4415-B041-A19570E98F24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialGolf.DtoManager", "MySocialGolf.DTOManager\MySocialGolf.DtoManager.csproj", "{E1EBF3A1-362A-4AA7-BC37-612959E0B411}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialGolf.DataManager", "MySocialGolf.DataManager\MySocialGolf.DataManager.csproj", "{E1EBF3A1-362A-4AA7-BC37-612959E0B411}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialGolf.Model", "MySocialGolf.Model\MySocialGolf.Model.csproj", "{FA1DE9DA-5AAD-4706-AE0B-FC04BFD8ED4C}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialGolf.Manager.Identity", "MySocialGolf.Manager.Identity\MySocialGolf.Manager.Identity.csproj", "{AE59A2B1-8E9E-4590-9183-1724F6D7953D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialGolf.Model.Identity", "MySocialGolf.Model.Identity\MySocialGolf.Model.Identity.csproj", "{8E9FE29E-52BE-4E62-82E3-192BEDC91F73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialGolf.Manager.Email", "MySocialGolf.Manager.Email\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email.csproj", "{036802CE-7EED-4FB4-9D61-DD2075AE8346}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{8E9FE29E-52BE-4E62-82E3-192BEDC91F73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E9FE29E-52BE-4E62-82E3-192BEDC91F73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E9FE29E-52BE-4E62-82E3-192BEDC91F73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{036802CE-7EED-4FB4-9D61-DD2075AE8346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{036802CE-7EED-4FB4-9D61-DD2075AE8346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{036802CE-7EED-4FB4-9D61-DD2075AE8346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{036802CE-7EED-4FB4-9D61-DD2075AE8346}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

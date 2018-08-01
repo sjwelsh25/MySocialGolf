@@ -46,6 +46,7 @@ namespace MySocialGolf.Web.API.App_Start
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+
         }
     }
 }

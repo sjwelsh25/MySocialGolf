@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
-using MySocialGolf.DtoManager;
+using MySocialGolf.DataManager;
 using MySocialGolf.Web.Models.ViewModels;
-using MySocialGolf.DtoModel;
+using MySocialGolf.DataModel;
 using MySocialGolf.Model;
 
 namespace MySocialGolf.Web.Controllers
@@ -24,7 +24,7 @@ namespace MySocialGolf.Web.Controllers
         // GET: User/List
         public ViewResult List()
         {
-            UserDtoManager uDtoMngr = new UserDtoManager();
+            UserDataManager uDtoMngr = new UserDataManager();
             UserListViewModel ulvm = new UserListViewModel();
             ulvm.UserDTOList = uDtoMngr.ListUser(new UserSearchModel());
             return View(ulvm);
@@ -41,7 +41,7 @@ namespace MySocialGolf.Web.Controllers
         public ActionResult Add(UserDataModel user)
         {
             // Add insert logic here
-            var usrMngr = new UserDtoManager();
+            var usrMngr = new UserDataManager();
             usrMngr.AddUser(user);
 
             return View(user);

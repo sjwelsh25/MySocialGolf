@@ -1,11 +1,16 @@
-﻿14/3/18
-- Change to DataModels and DataManagers assemblies
+﻿1/8/18 
+- Register and confirm with email 
+- Forgot password
+- Invite Friend
+
+14/3/18
+- DONE Change to DataModels and DataManagers assemblies
 - Get all Adds working 
-- Have a simple User wrapper - understand it
+- DONE Have a simple User wrapper - understand it
 
 6/12/17
-- Add Admin page (if admin login only)
-- investigate mailgun email service to email friends and also forgot password function
+- DONE Add Admin page (if admin login only)
+- DONE (SendGrid) investigate mailgun email service to email friends and also forgot password function
 
 
 26/7/17

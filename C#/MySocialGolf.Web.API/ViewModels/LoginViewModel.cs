@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MySocialGolf.Web.Models.ViewModels;
+using System.ComponentModel.DataAnnotations;
 
 namespace MySocialGolf.Web.API.ViewModels
 {
-    public class LoginViewModel
+    public class LoginViewModel: BaseViewModel
     {
         [Required]
         [Display(Name = "User name")]

@@ -83,6 +83,10 @@
       <HintPath>..\packages\Portable.Licensing.1.1.0\lib\portable-net40+sl4+wp7+win8\Portable.Licensing.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SendGrid, Version=9.8.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sendgrid.9.9.0\lib\net452\SendGrid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
@@ -271,7 +275,9 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="_Docs\EndpointsNotes.txt" />
+    <Content Include="_Docs\SendGrid.txt" />
     <Content Include="_Docs\ToDo.txt" />
+    <Content Include="MySocialGolfAppSettings.config" />
     <None Include="Properties\PublishProfiles\rmi-simon.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\filter.js" />
@@ -331,17 +337,21 @@
     <Content Include="Views\Admin\Email.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MySocialGolf.DTOManager\MySocialGolf.DtoManager.csproj">
+    <ProjectReference Include="..\MySocialGolf.DataManager\MySocialGolf.DataManager.csproj">
       <Project>{e1ebf3a1-362a-4aa7-bc37-612959e0b411}</Project>
-      <Name>MySocialGolf.DtoManager</Name>
+      <Name>MySocialGolf.DataManager</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MySocialGolf.DTOModel\MySocialGolf.DtoModel.csproj">
+    <ProjectReference Include="..\MySocialGolf.DataModel\MySocialGolf.DataModel.csproj">
       <Project>{0246314e-1acd-4415-b041-a19570e98f24}</Project>
-      <Name>MySocialGolf.DtoModel</Name>
+      <Name>MySocialGolf.DataModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\MySocialGolf.Extensions\MySocialGolf.Extensions.csproj">
       <Project>{3406F6E3-45E6-458A-B5F5-843909E95B64}</Project>
       <Name>MySocialGolf.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email.csproj">
+      <Project>{036802CE-7EED-4FB4-9D61-DD2075AE8346}</Project>
+      <Name>MySocialGolf.Manager.Email</Name>
     </ProjectReference>
     <ProjectReference Include="..\MySocialGolf.Manager.Identity\MySocialGolf.Manager.Identity.csproj">
       <Project>{ae59a2b1-8e9e-4590-9183-1724f6d7953d}</Project>

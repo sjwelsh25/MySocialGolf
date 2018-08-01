@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.Owin;
 using MySocialGolf.Web.API.App_Start;
 using Owin;
 using System;

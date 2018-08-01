@@ -56,13 +56,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MySocialGolf.DTOManager\MySocialGolf.DtoManager.csproj">
+    <ProjectReference Include="..\MySocialGolf.DataManager\MySocialGolf.DataManager.csproj">
       <Project>{e1ebf3a1-362a-4aa7-bc37-612959e0b411}</Project>
-      <Name>MySocialGolf.DtoManager</Name>
+      <Name>MySocialGolf.DataManager</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MySocialGolf.DTOModel\MySocialGolf.DtoModel.csproj">
+    <ProjectReference Include="..\MySocialGolf.DataModel\MySocialGolf.DataModel.csproj">
       <Project>{0246314e-1acd-4415-b041-a19570e98f24}</Project>
-      <Name>MySocialGolf.DtoModel</Name>
+      <Name>MySocialGolf.DataModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\MySocialGolf.Extensions\MySocialGolf.Extensions.csproj">
       <Project>{3406f6e3-45e6-458a-b5f5-843909e95b64}</Project>

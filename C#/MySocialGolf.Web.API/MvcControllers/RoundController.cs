@@ -1,7 +1,8 @@
 ﻿using System.Web.Mvc;
-using MySocialGolf.DtoManager;
+using MySocialGolf.DataManager;
 using MySocialGolf.Web.Models.ViewModels;
-using MySocialGolf.DtoModel;
+using MySocialGolf.DataModel;
+using MySocialGolf.Manager;
 
 namespace MySocialGolf.Web.Controllers
 {
@@ -29,7 +30,7 @@ namespace MySocialGolf.Web.Controllers
         // GET: User/List
         public ViewResult List()
         {
-            GolfRoundsDtoManager userMngr = new GolfRoundsDtoManager();
+            GolfRoundsDataManager userMngr = new GolfRoundsDataManager();
             UserGolfRoundListViewModel ugrlvm = new UserGolfRoundListViewModel();
             ugrlvm.UserGolfRoundDTOList = userMngr.ListGolfRoundForUser(0);
             return View(ugrlvm);
@@ -39,7 +40,12 @@ namespace MySocialGolf.Web.Controllers
         [HttpPost]
         public ActionResult Add(GolfRoundDataModel roundDTO)
         {
-            GolfRoundsDtoManager usrMngr = new GolfRoundsDtoManager();
+            GolfRoundsDataManager usrMngr = new GolfRoundsDataManager();
+            // if UserId is Null then get it from Session
+            if (roundDTO.UserId == null || roundDTO.UserId == 0)
+            {
+                roundDTO.UserId = SessionManager.Model.UserId;
+            }
             usrMngr.UpdateGolfRound(roundDTO);
 
             return View(roundDTO);

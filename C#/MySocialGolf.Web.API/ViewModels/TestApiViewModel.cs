@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using MySocialGolf.DtoModel;
+using MySocialGolf.DataModel;
 
 namespace MySocialGolf.Web.Models.ViewModels
 {

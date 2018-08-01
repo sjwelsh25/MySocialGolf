@@ -1,0 +1,16 @@
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email\bin\Debug\MySocialGolf.Manager.Email.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email\bin\Debug\MySocialGolf.Manager.Email.pdb
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email\bin\Debug\MySocialGolf.Model.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email\bin\Debug\Newtonsoft.Json.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email\bin\Debug\SendGrid.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email\bin\Debug\MySocialGolf.DataModel.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email\bin\Debug\MySocialGolf.Extensions.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email\bin\Debug\MySocialGolf.Model.pdb
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email\bin\Debug\Newtonsoft.Json.xml
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email\bin\Debug\SendGrid.pdb
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email\bin\Debug\SendGrid.xml
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email\bin\Debug\MySocialGolf.DataModel.pdb
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email\bin\Debug\MySocialGolf.Extensions.pdb
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email\obj\Debug\MySocialGolf.Manager.Email.csprojResolveAssemblyReference.cache
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email\obj\Debug\MySocialGolf.Manager.Email.dll
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Manager.Email\MySocialGolf.Manager.Email\obj\Debug\MySocialGolf.Manager.Email.pdb

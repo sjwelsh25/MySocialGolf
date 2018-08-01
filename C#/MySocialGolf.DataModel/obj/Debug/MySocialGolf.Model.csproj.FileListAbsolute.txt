@@ -1,0 +1,14 @@
+C:\Dev\DevComputeriseMe\SocialGolfTracker\C#\MySocialGolf.Model\bin\Debug\MySocialGolf.Model.dll
+C:\Dev\DevComputeriseMe\SocialGolfTracker\C#\MySocialGolf.Model\bin\Debug\MySocialGolf.Model.pdb
+C:\Dev\DevComputeriseMe\SocialGolfTracker\C#\MySocialGolf.Model\obj\Debug\MySocialGolf.Model.csprojResolveAssemblyReference.cache
+C:\Dev\DevComputeriseMe\SocialGolfTracker\C#\MySocialGolf.Model\obj\Debug\MySocialGolf.Model.dll
+C:\Dev\DevComputeriseMe\SocialGolfTracker\C#\MySocialGolf.Model\obj\Debug\MySocialGolf.Model.pdb
+C:\Dev\DevComputeriseMe\MySocialGolf\C#\MySocialGolf.Model\bin\Debug\MySocialGolf.Model.dll
+C:\Dev\DevComputeriseMe\MySocialGolf\C#\MySocialGolf.Model\bin\Debug\MySocialGolf.Model.pdb
+C:\Dev\DevComputeriseMe\MySocialGolf\C#\MySocialGolf.Model\obj\Debug\MySocialGolf.Model.dll
+C:\Dev\DevComputeriseMe\MySocialGolf\C#\MySocialGolf.Model\obj\Debug\MySocialGolf.Model.pdb
+C:\Dropbox\Dev\ComputeriseMe\DotNet\MySocialGolf\C#\MySocialGolf.Model\bin\Debug\MySocialGolf.Model.dll
+C:\Dropbox\Dev\ComputeriseMe\DotNet\MySocialGolf\C#\MySocialGolf.Model\bin\Debug\MySocialGolf.Model.pdb
+C:\Dropbox\Dev\ComputeriseMe\DotNet\MySocialGolf\C#\MySocialGolf.Model\obj\Debug\MySocialGolf.Model.dll
+C:\Dropbox\Dev\ComputeriseMe\DotNet\MySocialGolf\C#\MySocialGolf.Model\obj\Debug\MySocialGolf.Model.pdb
+C:\Dropbox\Dev\ComputeriseMe\DotNet\MySocialGolf\C#\MySocialGolf.Model\obj\Debug\MySocialGolf.Model.csprojResolveAssemblyReference.cache

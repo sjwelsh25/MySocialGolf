@@ -8,8 +8,8 @@ using Dapper;
 using MySocialGolf.Model.Identity;
 using System.Configuration;
 using System.Data.SqlClient;
-using MySocialGolf.DtoManager;
-using MySocialGolf.DtoModel;
+using MySocialGolf.DataManager;
+using MySocialGolf.DataModel;
 using MySocialGolf.Extensions;
 
 namespace MySocialGolf.Manager.Identity
@@ -30,7 +30,7 @@ namespace MySocialGolf.Manager.Identity
                 throw new ArgumentNullException("user");
 
             return Task.Factory.StartNew(() => {
-                var uDtomngr = new UserDtoManager();
+                var uDtomngr = new UserDataManager();
                 var uDto = new UserDataModel()
                 {
                     UserName = user.UserName,
@@ -52,7 +52,7 @@ namespace MySocialGolf.Manager.Identity
 
             return Task.Factory.StartNew(() =>
             {
-                var uDtomngr = new UserDtoManager();
+                var uDtomngr = new UserDataManager();
                 uDtomngr.DeleteUser(user.UserId.IToInt());
                 //using (SqlConnection connection = new SqlConnection(connectionString))
                 //    connection.Execute("deete from Users where UserId = @userId", new { user.UserId });
@@ -70,7 +70,7 @@ namespace MySocialGolf.Manager.Identity
 
             return Task.Factory.StartNew(() =>
             {
-                var uDtomngr = new UserDtoManager();
+                var uDtomngr = new UserDataManager();
                 var uDto = uDtomngr.GetUser(userId.IToInt());
                 var myUser = new IdentityUser();
 
@@ -91,7 +91,7 @@ namespace MySocialGolf.Manager.Identity
 
             return Task.Factory.StartNew(() =>
             {
-                var uDtomngr = new UserDtoManager();
+                var uDtomngr = new UserDataManager();
                 var uDto = uDtomngr.GetUserByUserName(userName);
 
                 if (uDto == null)
@@ -158,7 +158,7 @@ namespace MySocialGolf.Manager.Identity
             if (user == null)
                 throw new ArgumentNullException("user");
 
-            var elDtomngr = new ExternalLoginsDtoManager();
+            var elDtomngr = new ExternalLoginsDataManager();
             var elDto = elDtomngr.ListExternalLogins(user.UserId.IToInt());
 
             return Task.Factory.StartNew(() =>

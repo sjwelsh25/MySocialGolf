@@ -5,8 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Routing;
-using MySocialGolf.DtoModel;
-using MySocialGolf.DtoManager;
+using MySocialGolf.DataModel;
+using MySocialGolf.DataManager;
 
 namespace MySocialGolf.Web.API.Controllers
 {
@@ -20,7 +20,7 @@ namespace MySocialGolf.Web.API.Controllers
         [Route("api/users/{userid}/rounds")]
         public IHttpActionResult GetRoundsForUser(int userId)
         {
-            var grMngr = new GolfRoundsDtoManager();
+            var grMngr = new GolfRoundsDataManager();
             IEnumerable<GolfRoundDataModel> roundsList;
             try
             {
@@ -44,7 +44,7 @@ namespace MySocialGolf.Web.API.Controllers
         /// <returns>GolfRoundDataModel</returns>
         public IHttpActionResult Get(int roundId = 0)
         {
-            var grMngr = new GolfRoundsDtoManager();
+            var grMngr = new GolfRoundsDataManager();
             GolfRoundDataModel round;
             try
             {
@@ -70,7 +70,7 @@ namespace MySocialGolf.Web.API.Controllers
         public IHttpActionResult Post(int userId, GolfRoundDataModel golfRound)
         {
             {
-                var grMngr = new GolfRoundsDtoManager();
+                var grMngr = new GolfRoundsDataManager();
                 try
                 {
                     grMngr.AddGolfRound(golfRound);

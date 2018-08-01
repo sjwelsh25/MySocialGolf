@@ -9,14 +9,14 @@ namespace MySocialGolf.Web.Models.ViewModels
     public class AdminTestEmailViewModel: BaseViewModel
     {
         [Required]
-        [Display(Name = "ToEmail")]
+        [Display(Name = "To Email")]
         public string ToEmail { get; set; }
 
-        [Display(Name = "EmailSubject")]
+        [Display(Name = "Email Subject")]
         public string EmailSubject { get; set; }
 
         [Required]
-        [Display(Name = "EmailBody")]
+        [Display(Name = "Email Body")]
         public string EmailBody { get; set; }
 
 

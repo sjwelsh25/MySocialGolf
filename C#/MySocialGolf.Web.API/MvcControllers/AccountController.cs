@@ -10,9 +10,10 @@ using Microsoft.Owin.Security;
 using MySocialGolf.Manager.Identity;
 using MySocialGolf.Model.Identity;
 using MySocialGolf.Web.API.ViewModels;
-using MySocialGolf.DtoManager;
+using MySocialGolf.DataManager;
 using MySocialGolf.Extensions;
-using MySocialGolf.DtoModel;
+using MySocialGolf.DataModel;
+using MySocialGolf.Manager;
 
 namespace MySocialGolf.Web.Controllers
 {
@@ -106,7 +107,7 @@ namespace MySocialGolf.Web.Controllers
         // GET: /Account/myprofile
         public ActionResult MyProfile()
         {
-            UserDtoManager uDtoMngr = new UserDtoManager();
+            UserDataManager uDtoMngr = new UserDataManager();
             UserDataModel uDto = uDtoMngr.GetUser(User.Identity.GetUserId().IToInt());
             MyProfileViewModel mpvm = uDto.ICopyObject<MyProfileViewModel>();
             return View(mpvm);
@@ -123,7 +124,7 @@ namespace MySocialGolf.Web.Controllers
                 var uDto = model.ICopyObject<UserDataModel>();
                 uDto.UserId = User.Identity.GetUserId().IToInt(); // may not be in VM as View does not display the user Id - add it again
                 // Add insert logic here
-                var usrMngr = new UserDtoManager();
+                var usrMngr = new UserDataManager();
                 usrMngr.UpdateUser(uDto);
                 model.SubmitMessage = uDto.SubmitMessage;
             }
@@ -372,6 +373,9 @@ namespace MySocialGolf.Web.Controllers
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
             var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
             AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
+
+            new UserManager().LogInUser(identity.GetUserName());
+
         }
 
         private void AddErrors(IdentityResult result)

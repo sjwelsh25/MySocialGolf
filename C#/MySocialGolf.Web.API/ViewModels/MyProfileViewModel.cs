@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using MySocialGolf.DtoModel;
+using MySocialGolf.DataModel;
 
 namespace MySocialGolf.Web.API.ViewModels
 {

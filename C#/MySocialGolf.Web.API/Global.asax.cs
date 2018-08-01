@@ -10,6 +10,7 @@ using TwitterBootstrapMVC;
 using System.Web.Http;
 using System.Web.Helpers;
 using System.Security.Claims;
+using MySocialGolf.Manager;
 
 namespace MySocialGolf.Web
 {
@@ -30,6 +31,17 @@ namespace MySocialGolf.Web
             });
 
             Bootstrap.Configure();
+        }
+
+        void Session_Start(object sender, EventArgs e)
+        {
+            // your code here, it will be executed upon session start
+            // if the user has a cookie and has previously signed in then log the Login Event and set the Session values
+            if (Request.IsAuthenticated)
+            {
+                new UserManager().LogInUser(User.Identity.Name);
+            }
+
         }
     }
 }

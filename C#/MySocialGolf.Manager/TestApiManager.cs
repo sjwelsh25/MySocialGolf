@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using MySocialGolf.DtoModel;
-using MySocialGolf.DtoManager;
+using MySocialGolf.DataModel;
+using MySocialGolf.DataManager;
 using MySocialGolf.Manager.RESTful;
 using MySocialGolf.Model;
 using Newtonsoft.Json;
@@ -12,7 +12,7 @@ namespace MySocialGolf.Manager
     {
         public TestApiDataModel TestApi(int testApiID)
         {
-            TestApiDtoManager taDtoMngr = new TestApiDtoManager();
+            TestApiDataManager taDtoMngr = new TestApiDataManager();
             TestApiDataModel taDto = taDtoMngr.ListTestApi(testApiID).FirstOrDefault<TestApiDataModel>();
 
             RestCallModel rcModel = new RestCallModel();

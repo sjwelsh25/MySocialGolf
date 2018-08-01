@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-using MySocialGolf.DtoModel;
+using MySocialGolf.DataModel;
 
 namespace MySocialGolf.Web.Models.ViewModels
 {
