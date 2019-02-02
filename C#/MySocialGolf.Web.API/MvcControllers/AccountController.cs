@@ -91,6 +91,16 @@ namespace MySocialGolf.Web.Controllers
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
+
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account",
+                        new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    MSGUserManager usrMngr = new MSGUserManager();
+                    usrMngr.RegisterNewUser(callbackUrl, code);
+                    //await UserManager.SendEmailAsync(user.Id,
+                    //   "Confirm your account", "Please confirm your account by clicking <a href=\""
+                    //   + callbackUrl + "\">here</a>");
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -374,7 +384,7 @@ namespace MySocialGolf.Web.Controllers
             var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
             AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
 
-            new UserManager().LogInUser(identity.GetUserName());
+            new MSGUserManager().LogInUser(identity.GetUserName());
 
         }
 

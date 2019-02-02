@@ -41,6 +41,11 @@ namespace MySocialGolf.DataManager
 
         public bool AddUser(UserDataModel user)
         {
+            if (user == null)
+            {
+                throw new Exception("AddUser failed > No UserDataModel provided");
+            }
+
             DynamicParameters p = new DynamicParameters();
             p.Add("@UserName", user.UserName);
             p.Add("@PasswordHash", user.PasswordHash);
@@ -86,6 +91,13 @@ namespace MySocialGolf.DataManager
             user.SubmitMessage = p.Get<string>("@SubmitMessage");
             return true;
         }
+
+        #region User Registration
+        public void RegisterNewUser(int id)
+        {
+            // write the email to the DB
+        }
+        #endregion User Registration 
 
         #region Golf Round
         public GolfRoundDataModel GetUserGolfRound(int userId)

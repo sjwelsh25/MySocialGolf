@@ -71,7 +71,8 @@ BEGIN
 CREATE TABLE [dbo].[User] 
     (
       [UserId] INT IdENTITY(1,1) NOT NULL
-      , [UserGuid] UNIQUEIdENTIFIER NOT NULL CONSTRAINT DF_User_UserGuid DEFAULT NEWId()
+      , UserName NVARCHAR(MAX)
+      , [UserGuid] UNIQUEIdENTIFIER NULL CONSTRAINT DF_User_UserGuid DEFAULT NEWId()
       , [Surname] NVARCHAR(100) NULL
       , [FirstName] NVARCHAR(100) NULL
       , [Email] NVARCHAR(300) NULL
@@ -83,6 +84,9 @@ CREATE TABLE [dbo].[User]
       , [ModifiedById] INT NULL
       , [ModifiedDateTime] DATETIME NULL
       , StatusId INT NULL
+      , PasswordHash   NVARCHAR(MAX) NULL
+      , SecurityStamp  NVARCHAR(MAX) NULL
+
       CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED (
         [UserId]
       )
@@ -510,44 +514,127 @@ IF OBJECT_Id('dbo.UserInsert') IS NULL
   EXEC('CREATE PROC dbo.UserInsert AS')
 GO
 
-ALTER PROCEDURE [dbo].UserInsert
-  @NewUserId INT = '' OUTPUT
-  , @Surname NVARCHAR(100) 
-  , @FirstName NVARCHAR(100) 
-  , @Email NVARCHAR(300) 
-  , @Mobile NVARCHAR(300)
-  , @CurrentHandicap DECIMAL(18,2) = NULL 
-  , @SubmitMessage NVARCHAR(1000) = '' OUTPUT
-  , @UserGuid UNIQUEIdENTIFIER = NULL
+ALTER PROCEDURE [dbo].[UserInsert]
+  @NewUserId      INT = '' OUTPUT,
+  @Surname        NVARCHAR(100) ,
+  @FirstName      NVARCHAR(100) ,
+  @UserName       NVARCHAR(MAX),
+  @Email          NVARCHAR(300),
+  @Mobile         NVARCHAR(300) = '',
+  @CurrentHandicap DECIMAL(18,2) = NULL, 
+  @SubmitMessage   NVARCHAR(1000) = '' OUTPUT,
+  @UserGuid        UNIQUEIdENTIFIER = NULL,
+  @PasswordHash   NVARCHAR(MAX) = NULL,
+  @SecurityStamp  NVARCHAR(MAX) = NULL
+
 AS
 BEGIN
+  -- initialise
+  SET @NewUserId = 0
+  SET @SubmitMessage = ''
+
+  -- Validation: ensure same email cannot be added again
+  IF EXISTS
+  (
+    SELECT *
+    FROM dbo.[User] u
+    WHERE ISNULL(@Email, '') <> '' 
+      AND Email = @Email
+  )
+  BEGIN
+    SET @SubmitMessage = 'User not added. User with same email already exists ' + @Email + '. ' + dbo.fnFormatDate(GETDATE(), 'dd MMM yyyy hh:nn:ssam/pm')
+    -- RAISERROR(@SubmitMessage, 16, 1)
+    RETURN -1
+  END  
+
+  -- Hack to ensure Jimmy Test is added with Id of 1
+  IF (@FirstName = 'Jimmy' 
+      AND @Surname = 'Test' 
+      AND NOT EXISTS(SELECT * FROM [User] u WHERE UserId = 1))
+  BEGIN
+    SET IDENTITY_INSERT [User] ON
+    SET @NewUserId = 1    
+    
+    INSERT INTO [User]
+    (
+      UserId         , 
+      UserName       , 
+      Surname        , 
+      FirstName      , 
+      Email          , 
+      Mobile         , 
+      CurrentHandicap,  
+      CreatedById    , 
+      CreatedDateTime, 
+      StatusId       , 
+      UserGuid,
+      PasswordHash,
+      SecurityStamp
+    )
+    SELECT 
+      @NewUserId                             , 
+      UserName = @UserName                   , 
+      Surname = @Surname                     , 
+      FirstName = @FirstName                 , 
+      Email = @Email                         , 
+      Mobile = @Mobile                       , 
+      CurrentHandicap = @CurrentHandicap     , 
+      CreatedById = dbo.fnGetCurrentUserId() , 
+      CreatedDateTime = GETDATE()            , 
+      StatusId = 1                           ,  -- 'Active'  
+      UserGuid = ISNULL(@UserGuid, NEWId()),
+      PasswordHash = @PasswordHash,
+      SecurityStamp = @SecurityStamp
+
+    SET IDENTITY_INSERT [User] OFF
+    SET @SubmitMessage = 'New User Created ' + dbo.fnFormatDate(GETDATE(), 'dd MMM yyyy hh:nn:ssam/pm')
+    RETURN
+  END
+
   INSERT INTO [User]
     (
-      Surname  
-      , FirstName 
-      , Email 
-      , Mobile 
-      , CurrentHandicap 
-      , CreatedById 
-      , CreatedDateTime
-      , StatusId
-      , UserGuid
+      UserName       , 
+      Surname        , 
+      FirstName      , 
+      Email          , 
+      Mobile         , 
+      CurrentHandicap,  
+      CreatedById    , 
+      CreatedDateTime, 
+      StatusId       , 
+      UserGuid,
+      PasswordHash,
+      SecurityStamp
     )
   SELECT 
-    Surname = @Surname 
-    , FirstName = @FirstName
-    , Email = @Email
-    , Mobile = @Mobile
-    , CurrentHandicap = @CurrentHandicap 
-    , CreatedById = dbo.fnGetCurrentUserId()
-    , CreatedDateTime = GETDATE()
-    , StatusId = 1 -- 'Active'
-    , UserGuid = ISNULL(@UserGuid, NEWId())
+    UserName = @UserName                   , 
+    Surname = @Surname                     , 
+    FirstName = @FirstName                 , 
+    Email = @Email                         , 
+    Mobile = @Mobile                       , 
+    CurrentHandicap = @CurrentHandicap     , 
+    CreatedById = dbo.fnGetCurrentUserId() , 
+    CreatedDateTime = GETDATE()            , 
+    StatusId = 1                           ,  -- 'Active' 
+    UserGuid = ISNULL(@UserGuid, NEWId()),
+    PasswordHash = @PasswordHash,
+    SecurityStamp = @SecurityStamp
 
   SET @NewUserId = SCOPE_IdENTITY()
   SET @SubmitMessage = 'New User Created ' + dbo.fnFormatDate(GETDATE(), 'dd MMM yyyy hh:nn:ssam/pm')
 
 END
+/*
+DECLARE @NewIdOut INT, @msg NVARCHAR(100)
+EXEC UserInsert
+  @Surname = 'Test2' ,
+  @FirstName = 'JimmyNew', 
+  @Email = 'jim@email2.com.au',
+  @NewUserId = @NewIdOut OUTPUT,
+  @SubmitMessage = @msg OUTPUT
+SELECT Id = @NewIdOut, Msg = @msg
+-- select * from [User]
+*/
 GO
 
 PRINT 'ALTER PROCEDURE dbo.UserDelete. SW 08/11/15'
@@ -576,19 +663,32 @@ BEGIN
 END
 GO
 
-PRINT 'ALTER PROCEDURE dbo.UserList. SW 08/11/15'
-GO
 
 IF OBJECT_Id('dbo.UserList') IS NULL
   EXEC('CREATE PROC dbo.UserList AS')
 GO
 
-ALTER PROCEDURE [dbo].UserList
-  @UserId INT = NULL OUTPUT
+PRINT 'ALTER PROCEDURE dbo.UserList. SW 08/11/15'
+GO
+
+ALTER PROCEDURE [dbo].[UserList]
+  @UserId INT = NULL OUTPUT,
+  @UserName NVARCHAR(MAX) = NULL
 AS
 BEGIN
+  ;WITH cte AS
+  (
+    SELECT 
+      UserId,
+      GolfRoundDate,
+      RowNumber = ROW_NUMBER() OVER (PARTITION BY gr.UserId ORDER BY GolfRoundDate DESC)
+    FROM GolfRound gr 
+    WHERE gr.UserId = ISNULL(@UserId, gr.UserId)
+  )
+
   SELECT 
-    UserId,
+    u.UserId,
+    u.UserName,
     Surname,          
     FirstName,    
     Email,        
@@ -603,18 +703,24 @@ BEGIN
           WHEN ISNULL(FirstName, '') <> '' THEN ', ' + FirstName
           ELSE ''
         END,
-    LastGolfRoundDate = 
-        (
-          SELECT TOP 1 GolfRoundDate 
-          FROM GolfRound ugr
-          WHERE UserId = u.UserId
-          ORDER BY GolfRoundDate DESC
-        )
+    LastGolfRoundDate = cte.GolfRoundDate,
+    LastHandicapAndDate = CONVERT(VARCHAR(10), FLOOR(CurrentHandicap)) + 
+        CASE 
+          WHEN cte.GolfRoundDate IS NULL THEN ''
+          ELSE '  (' + dbo.fnFormatDate(cte.GolfRoundDate, 'dd/mm/yy') + ')'
+        END,
+    u.PasswordHash,
+    u.SecurityStamp
   FROM [User] u
-  WHERE UserId = ISNULL(@UserId, UserId)
+    LEFT JOIN cte ON
+      cte.UserId = u.UserId
+      AND cte.RowNumber = 1 -- only get the first one
+  WHERE 
+    u.UserId = ISNULL(@UserId, u.UserId)
+    AND u.UserName = ISNULL(@UserName, u.UserName)
   
 END
--- EXEC UserList
+-- EXEC UserList @Username = 'jim@email.com.au'
 GO
 
 PRINT 'ALTER PROCEDURE dbo.GolfRoundInsert. SW 08/11/15'
@@ -639,7 +745,7 @@ BEGIN
   IF NOT EXISTS(SELECT * FROM dbo.[User] WHERE UserId = @UserId)
   BEGIN
     SET @SubmitMessage = 'Cannot add round. User ' + CONVERT(VARCHAR(30), ISNULL(@UserId, '-1')) + ' does not exist ' + dbo.fnFormatDate(GETDATE(), 'dd MMM yyyy hh:nn:ssam/pm')
-    RAISERROR(@SubmitMessage)
+    RAISERROR(@SubmitMessage, 16, 1)
     RETURN -1
   END  
 
@@ -764,19 +870,23 @@ DELETE
   UNION ALL 
   SELECT TestName = 'GetAllUsers', HttpVerb = 'GET', TestUrl = 'api/users', TestInputJson = '', ReturnType = '', CreatedById = dbo.fnGetCurrentUserId(), CreatedDateTime = GETDATE()
   UNION ALL 
-  SELECT TestName = 'AddUserSimon', HttpVerb = 'POST', TestUrl = 'api/users', TestInputJson = '{ Surname:"Welsh", FirstName:"Simon", Mobile:"0400925025", CurrentHandicap:11 }', ReturnType = '', CreatedById = dbo.fnGetCurrentUserId(), CreatedDateTime = GETDATE()
+  SELECT TestName = 'AddUser-User2', HttpVerb = 'POST', TestUrl = 'api/users', TestInputJson = '{ UserId: 0 }', ReturnType = '', CreatedById = dbo.fnGetCurrentUserId(), CreatedDateTime = GETDATE()
   UNION ALL 
-  SELECT TestName = 'AddUserLeo', HttpVerb = 'POST', TestUrl = 'api/users', TestInputJson = '{ Surname:"Welsh", FirstName:"Leonardo", Mobile:"", CurrentHandicap:36 }', ReturnType = '', CreatedById = dbo.fnGetCurrentUserId(), CreatedDateTime = GETDATE()
+  SELECT TestName = 'AddUser-Simon', HttpVerb = 'POST', TestUrl = 'api/users', TestInputJson = '{ UserId: 0, UserName:"sjwelsh@gmail.com", Surname:"Welsh", FirstName:"Simon", Email:"sjwelsh@gmail.com", Mobile:"0400925025", CurrentHandicap:11, PasswordHash:"", SecurityStamp:"", LastHandicapAndDate: "" }', ReturnType = '', CreatedById = dbo.fnGetCurrentUserId(), CreatedDateTime = GETDATE()
   UNION ALL 
-  SELECT TestName = 'DeleteUser', HttpVerb = 'DELETE', TestUrl = 'api/users/1', TestInputJson = '', ReturnType = '', CreatedById = dbo.fnGetCurrentUserId(), CreatedDateTime = GETDATE()
+  SELECT TestName = 'AddUser-Leo', HttpVerb = 'POST', TestUrl = 'api/users', TestInputJson = '{ UserId: 0, UserName:"leonardo@thelab.com", Surname:"Welsh", FirstName:"Leonardo", Email:"leonardo@thelab.com", Mobile:"", CurrentHandicap:36, PasswordHash:"", SecurityStamp:"", LastHandicapAndDate:"" }', ReturnType = '', CreatedById = dbo.fnGetCurrentUserId(), CreatedDateTime = GETDATE()
   UNION ALL 
-  SELECT TestName = 'AddGolfRoundWaterford', HttpVerb = 'POST', TestUrl = 'api/users/2/rounds', TestInputJson = '{ UserId:"1", GolfCourseName:"Waterford Valley", StableFordScore:"36", CurrentHandicap:18 }', ReturnType = '', CreatedById = dbo.fnGetCurrentUserId(), CreatedDateTime = GETDATE()
+  SELECT TestName = 'DeleteUser-JimmyDefault', HttpVerb = 'DELETE', TestUrl = 'api/users/1', TestInputJson = '', ReturnType = '', CreatedById = dbo.fnGetCurrentUserId(), CreatedDateTime = GETDATE()
   UNION ALL 
-  SELECT TestName = 'AddGolfRoundRosebud', HttpVerb = 'POST', TestUrl = 'api/users/2/rounds', TestInputJson = '{ UserId:"1", GolfCourseName:"Rosebud", StableFordScore:"32", CurrentHandicap:18 }', ReturnType = '', CreatedById = dbo.fnGetCurrentUserId(), CreatedDateTime = GETDATE()
+  SELECT TestName = 'AddUser-JimmyDefault', HttpVerb = 'POST', TestUrl = 'api/users', TestInputJson = '{ UserId: 0, UserName:"jimmytest@email.com", Surname:"Test", FirstName:"Jimmy", Mobile:"", CurrentHandicap:11, Email:"jimmytest@email.com" }', ReturnType = '', CreatedById = dbo.fnGetCurrentUserId(), CreatedDateTime = GETDATE()
   UNION ALL 
-  SELECT TestName = 'GetGolfRoundsForUserCount', HttpVerb = 'GET', TestUrl = 'api/users/2/rounds', TestInputJson = '', ReturnType = 'ListCount', CreatedById = dbo.fnGetCurrentUserId(), CreatedDateTime = GETDATE()
+  SELECT TestName = 'AddGolfRound-Waterford', HttpVerb = 'POST', TestUrl = 'api/users/1/rounds', TestInputJson = '{ UserId:"1", GolfCourseName:"Waterford Valley", StableFordScore:"36", CurrentHandicap:18 }', ReturnType = '', CreatedById = dbo.fnGetCurrentUserId(), CreatedDateTime = GETDATE()
   UNION ALL 
-  SELECT TestName = 'GetGolfRoundsForUser', HttpVerb = 'GET', TestUrl = 'api/users/2/rounds', TestInputJson = '', ReturnType = '', CreatedById = dbo.fnGetCurrentUserId(), CreatedDateTime = GETDATE()
+  SELECT TestName = 'AddGolfRound-Rosebud', HttpVerb = 'POST', TestUrl = 'api/users/1/rounds', TestInputJson = '{ UserId:"1", GolfCourseName:"Rosebud", StableFordScore:"32", CurrentHandicap:18 }', ReturnType = '', CreatedById = dbo.fnGetCurrentUserId(), CreatedDateTime = GETDATE()
+  UNION ALL 
+  SELECT TestName = 'GetGolfRoundsForUserCount', HttpVerb = 'GET', TestUrl = 'api/users/1/rounds', TestInputJson = '', ReturnType = 'ListCount', CreatedById = dbo.fnGetCurrentUserId(), CreatedDateTime = GETDATE()
+  UNION ALL 
+  SELECT TestName = 'GetGolfRoundsForUser', HttpVerb = 'GET', TestUrl = 'api/users/1/rounds', TestInputJson = '', ReturnType = '', CreatedById = dbo.fnGetCurrentUserId(), CreatedDateTime = GETDATE()
   UNION ALL 
   SELECT TestName = 'GetAllGolfRounds', HttpVerb = 'GET', TestUrl = 'api/rounds', TestInputJson = '', ReturnType = '', CreatedById = dbo.fnGetCurrentUserId(), CreatedDateTime = GETDATE()
 )
@@ -813,9 +923,10 @@ SET IDENTITY_INSERT [User] ON
 ;WITH defaultUsersCte AS
 (
   SELECT 
-    Surname = 'Test' 
+    UserName = 'jimmytest@email.com'
+    , Surname = 'Test' 
     , FirstName = 'Jimmy'
-    , Email = 'jim@email.com.au'
+    , Email = 'jimmytest@email.com'
     , Mobile = ''
     , CurrentHandicap = 18
     , StatusId = 1 -- 'Active'
@@ -823,7 +934,8 @@ SET IDENTITY_INSERT [User] ON
 
 INSERT INTO [User]
   (
-    UserId
+    UserID
+    , UserName
     , Surname  
     , FirstName 
     , Email 
@@ -835,6 +947,7 @@ INSERT INTO [User]
   )
 SELECT 
   UserId = 1
+  , UserName = cte.UserName
   , Surname = cte.Surname 
   , FirstName = CTE.FirstName
   , Email = cte.Email
@@ -874,3 +987,8 @@ SET IDENTITY_INSERT [User] OFF
   exec golfroundlist @golfroundid = 0
 
   */
+
+PRINT 'Security Grant. 2/2/19'
+GO
+
+GRANT EXECUTE ON SCHEMA ::dbo TO [MySocialGolfLogin]

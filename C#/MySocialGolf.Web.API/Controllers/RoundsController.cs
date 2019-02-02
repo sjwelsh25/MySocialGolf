@@ -83,6 +83,28 @@ namespace MySocialGolf.Web.API.Controllers
             }
         }
 
+        // POST: api/Rounds
+        /// <summary>
+        /// Add a GolfRound
+        /// </summary>
+        /// <returns>GolfRoundDataModel</returns>
+        [Route("api/users/{userid}/rounduser")]
+        public IHttpActionResult Post(int userId, UserDataModel userDto)
+        {
+            {
+                var udm = new UserDataManager();
+                try
+                {
+                    udm.AddUser(userDto);
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+                return Ok(userDto.SubmitMessage);
+            }
+        }
+
         // PUT: api/Rounds/5
         /// <summary>
         /// Update a GolfRound

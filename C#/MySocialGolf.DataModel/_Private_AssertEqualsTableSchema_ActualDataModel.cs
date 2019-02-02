@@ -6,7 +6,7 @@ namespace MySocialGolf.DataModel
     /// Represents a Private_AssertEqualsTableSchema_Actual.
     /// NOTE: This class is generated from a T4 template - you should not modify it manually.
     /// </summary>
-    public class _Private_AssertEqualsTableSchema_ActualDataModel: BaseDto 
+    public class _Private_AssertEqualsTableSchema_ActualDataModel: BaseDataModel 
     {
         public string name { get; set; }
         public int? RANK(column_id) { get; set; }

@@ -6,7 +6,7 @@ namespace MySocialGolf.DataModel
     /// Represents a TestResult.
     /// NOTE: This class is generated from a T4 template - you should not modify it manually.
     /// </summary>
-    public class _TestResultDataModel: BaseDto 
+    public class _TestResultDataModel: BaseDataModel 
     {
         public int Id { get; set; }
         public string Class { get; set; }

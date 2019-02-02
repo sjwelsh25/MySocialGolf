@@ -31,6 +31,10 @@ namespace MySocialGolf.Manager.Email
             var plainTextContent = emailModel.BodyPlainText; // "and easy to do anywhere, even with C#";
             var htmlContent = emailModel.BodyHtml;           // "<strong>and easy to do anywhere, even with C#</strong>";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+
+            // todo: write this to the DB
+
+
             var response = await client.SendEmailAsync(msg);
         }
     }

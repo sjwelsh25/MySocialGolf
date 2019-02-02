@@ -39,7 +39,7 @@ namespace MySocialGolf.Web
             // if the user has a cookie and has previously signed in then log the Login Event and set the Session values
             if (Request.IsAuthenticated)
             {
-                new UserManager().LogInUser(User.Identity.Name);
+                new MSGUserManager().LogInUser(User.Identity.Name);
             }
 
         }

@@ -512,6 +512,12 @@
             </summary>
             <returns>GolfRoundDataModel</returns>
         </member>
+        <member name="M:MySocialGolf.Web.API.Controllers.RoundsController.Post(System.Int32,MySocialGolf.DataModel.UserDataModel)">
+            <summary>
+            Add a GolfRound
+            </summary>
+            <returns>GolfRoundDataModel</returns>
+        </member>
         <member name="M:MySocialGolf.Web.API.Controllers.RoundsController.Put(MySocialGolf.DataModel.GolfRoundDataModel)">
             <summary>
             Update a GolfRound

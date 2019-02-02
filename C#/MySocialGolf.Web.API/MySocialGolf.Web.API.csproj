@@ -275,6 +275,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="_Docs\EndpointsNotes.txt" />
+    <Content Include="_Docs\Gotchas.txt" />
     <Content Include="_Docs\SendGrid.txt" />
     <Content Include="_Docs\ToDo.txt" />
     <Content Include="MySocialGolfAppSettings.config" />

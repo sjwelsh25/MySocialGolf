@@ -10,9 +10,7 @@ namespace MySocialGolf.DataModel
     {
         public int UserId { get; set; }
         public string UserName { get; set; }
-        public string PasswordHash { get; set; }
-        public string SecurityStamp { get; set; }
-        public Guid UserGuid { get; set; }
+        public Guid? UserGuid { get; set; }
         public string Surname { get; set; }
         public string FirstName { get; set; }
         public string Email { get; set; }
@@ -24,5 +22,7 @@ namespace MySocialGolf.DataModel
         public int? ModifiedById { get; set; }
         public DateTime? ModifiedDateTime { get; set; }
         public int? StatusId { get; set; }
+        public string PasswordHash { get; set; }
+        public string SecurityStamp { get; set; }
     }
 }      

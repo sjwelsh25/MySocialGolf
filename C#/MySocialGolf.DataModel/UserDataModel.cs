@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace MySocialGolf.DataModel
 {
-    public class UserDataModel: _UserDataModel
+    public class UserDataModel : _UserDataModel
     {
-        public int? NewUserID { get; set; }
-        public DateTime LastGolfRoundDate { get; set; }
+        public int? NewUserId { get; set; }
+        public DateTime? LastGolfRoundDate { get; set; }
         public string LastHandicapAndDate { get; set; }
     }
+
 }

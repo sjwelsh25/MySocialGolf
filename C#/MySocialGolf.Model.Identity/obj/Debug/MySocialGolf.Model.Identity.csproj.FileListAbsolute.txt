@@ -4,3 +4,4 @@ C:\DevGIT\MySocialGolf\C#\MySocialGolf.Model.Identity\bin\Debug\Microsoft.AspNet
 C:\DevGIT\MySocialGolf\C#\MySocialGolf.Model.Identity\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\DevGIT\MySocialGolf\C#\MySocialGolf.Model.Identity\obj\Debug\MySocialGolf.Model.Identity.dll
 C:\DevGIT\MySocialGolf\C#\MySocialGolf.Model.Identity\obj\Debug\MySocialGolf.Model.Identity.pdb
+C:\DevGIT\MySocialGolf\C#\MySocialGolf.Model.Identity\obj\Debug\MySocialGolf.Model.Identity.csprojResolveAssemblyReference.cache
